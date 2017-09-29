@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.get('/speakers', (request, response) => {
     pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-        client.query('SELECT full_name__c, picture_path__c, ( SELECT session_title__c FROM salesforce.Session__c WHERE name = session__c ) FROM salesforce.Speaker__c', (err, result) => {
+        client.query('SELECT full_name__c, picture_path__c, session_title__c FROM salesforce.Speaker__c', (err, result) => {
             done();
             if (err){
                 console.error(err);
