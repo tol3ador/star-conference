@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require('body-parser');
+var path = require('path');
 var pg = require('pg');
 
 var app = express();
@@ -10,7 +11,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
-  response.send('Hello World!');
+  response.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 
 app.get('/db', function (request, response) {
