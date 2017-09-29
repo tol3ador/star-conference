@@ -1,6 +1,7 @@
-var express = require("express");
-var bodyParser = require('body-parser');
-var pg = require('pg');
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
+import pg from 'pg';
 
 var app = express();
 
@@ -9,21 +10,20 @@ app.set('port', process.env.PORT || 5000)
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/', function(request, response) {
-  response.send('Hello World!');
+app.get('/getSpeakers', function(request, response) {
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT full_name__c, picture_path__c, session__c FROM salesforce.Speaker__c', function(err, result) {
+            done();
+                if (err){
+                    console.error(err); 
+                    response.send("Error " + err); 
+                }else{
+                    response = result.rows;
+                }
+            });
+      });
 });
 
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM salesforce.Speaker__c', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.send(result); }
-    });
-  });
-});
 
 app.listen(app.get('port'), function() {
     console.log("Listening on " + app.get('port'));
