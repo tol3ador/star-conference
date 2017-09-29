@@ -18,6 +18,7 @@ app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM salesforce.Speaker__c', function(err, result) {
       done();
+      console.log(result);
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
