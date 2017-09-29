@@ -9,14 +9,14 @@ app.set('port', process.env.PORT || 5000)
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-app.get('/', function(request, response) {
+app.get('/speakers', function(request, response) {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT full_name__c, picture_path__c, session__c FROM salesforce.Speaker__c', function(err, result) {
           done();
           if (err)
            { console.error(err); response.send("Error " + err); }
           else
-           { response.send(result); }
+           { response.send(result.rows); }
         });
       });
 });
