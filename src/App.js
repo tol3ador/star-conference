@@ -1,19 +1,43 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import style from 'styled-components';
+import Speakers from './Speakers.js';
+
+const Container = style.div`
+  text-align: center;
+`;
+const Header = style.div`
+  background-color: #31566D;
+  height: 130px;
+  padding: 20px;
+  color: white;  
+`;
+const Logo = style.img`
+  height: 90px;
+`;
+const Title = style.h1`
+  font-size: 1.5em;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+  margin-top: 0px;
+`;
+const Subtitle = style.div`
+  font-size: 0.3em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Container>
+        <Header>
+          <Logo src={logo} alt="logo"/>
+          <Title>Star</Title>
+          <Subtitle>Conference</Subtitle>
+        </Header>
+        <Speakers/>
+      </Container>
     );
   }
 }
