@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
+const path = require('path');
 
 var app = express();
 
@@ -8,6 +9,10 @@ app.set('port', process.env.PORT || 5000)
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
+
+app.get('/', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+});
 
 app.get('/speakers', (request, response) => {
     pg.connect(process.env.DATABASE_URL, (err, client, done) => {
