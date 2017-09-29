@@ -7,7 +7,7 @@ var app = express();
 
 app.set('port', process.env.PORT || 5000)
 
-app.use(express.static('public'));
+app.use(express.static(path.resolve(__dirname, 'build')));
 app.use(bodyParser.json());
 
 app.get('/', (request, response) => {
