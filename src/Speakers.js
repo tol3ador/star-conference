@@ -37,7 +37,7 @@ class Speakers extends Component {
             );
         }else{
             if(this.props.hide){
-                return;
+                return null;
             }else{
                 return (
                     <List>
