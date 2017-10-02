@@ -52,7 +52,7 @@ class Timeline extends Component {
                     <List>
                     {
                         this.state.sessions.sort((a,b)=>{
-                            return timeToMinutes(a.time__c) < timeToMinutes(b.time__c);
+                            return timeToMinutes(a.time__c) > timeToMinutes(b.time__c);
                         })
                         .map((session, i) => {
                             return <SessionItem session={session.session_title__c} 
