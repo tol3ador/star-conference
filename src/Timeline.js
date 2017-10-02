@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from 'styled-components';
 import SessionItem from './SessionItem.js';
-import { List, Spinner } from 'react-mdl';
+import { List } from 'react-mdl';
 
 const Loader = style.div`
     position: absolute;
@@ -40,9 +40,7 @@ class Timeline extends Component {
     render() {
         if(this.state.loading && !this.props.hide){
             return (
-                <Loader>
-                    <Spinner/>
-                </Loader>
+                <Loader className="mdl-spinner mdl-js-spinner is-active"/>
             );
         }else{
             if(this.props.hide){
