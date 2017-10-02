@@ -31,31 +31,31 @@ class Timeline extends Component {
     render() {
         if(this.state.hide){
             return null;
-        }else{
-            if(this.props.loading){
-                return( 
-                    <Loader>
-                        <Spinner/>
-                    </Loader>
-                );
-            }else{
-                return (
-                    <List>
-                    {
-                        this.state.sessions.sort((a,b)=>{
-                            a.time__c.split`:`[0] < b.time__c.split`:`[0];
-                        })
-                        .map((session, i) => {
-                            return <SessionItem session={session.session_title__c} 
-                                                time={session.time__c}/>
-                        })
-                    }
-                    </List>
-                );
-            }
         }
+        
+        if(this.props.loading){
+            return ( 
+                <Loader>
+                    <Spinner/>
+                </Loader>
+            );
+        }
+
+        return (
+            <List>
+            {
+                this.state.sessions.sort((a,b)=>{
+                    a.time__c.split`:`[0] < b.time__c.split`:`[0];
+                })
+                .map((session, i) => {
+                    return <SessionItem session={session.session_title__c} 
+                                        time={session.time__c}/>
+                })
+            }
+            </List>
+        );
     }
-  }
+}
   
 export default Timeline;
   
