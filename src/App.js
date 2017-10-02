@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import style from 'styled-components';
 import Speakers from './Speakers.js';
+import { Tabs, Tab } from 'react-mdl';
 
-const Container = style.div`
+const Content = style.div`
 `;
 const Header = style.div`
   text-align: center;
@@ -28,16 +29,28 @@ const Subtitle = style.div`
 `;
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {activeTab: 1};
+  }
+
   render() {
     return (
-      <Container>
+      <div>
         <Header>
           <Logo src={logo} alt="logo"/>
           <Title>Star</Title>
           <Subtitle>Conference</Subtitle>
         </Header>
-        <Speakers/>
-      </Container>
+        <Content>
+          <Tabs activeTab={this.state.activeTab} onChange={(tabId)=> this.setState({activeTab: tabId})} ripple>
+            <Tab>Speakers</Tab>
+            <Tab>Sessions</Tab>
+          </Tabs>
+          {this.state.activeTab === 0 ? <Speakers/> : <div>TODO: Implement sessions view</div>}
+        </Content>
+      </div>
     );
   }
 }
