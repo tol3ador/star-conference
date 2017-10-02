@@ -9,6 +9,13 @@ const Loader = style.div`
     top: 50%;
 `;
 
+const timeToMinutes = (timeString) =>
+{
+    return eval(timeString.split`:`.map((part, index)=>{
+        index ? part : 60*part;
+    }).join`+`);
+}
+
 class Timeline extends Component {
 
     constructor(props){
@@ -39,7 +46,7 @@ class Timeline extends Component {
                     <List>
                     {
                         this.state.sessions.sort((a,b)=>{
-                            return a.time__c.split`:`[0] < b.time__c.split`:`[0];
+                            return timeToMinutes(a) < timeToMinutes(b);
                         })
                         .map((session, i) => {
                             return <SessionItem session={session.session_title__c} 
