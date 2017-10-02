@@ -4,9 +4,9 @@ import style from 'styled-components';
 import Speakers from './Speakers.js';
 
 const Container = style.div`
-  text-align: center;
 `;
 const Header = style.div`
+  text-align: center;
   background-color: #31566D;
   height: 130px;
   padding: 20px;
@@ -22,7 +22,7 @@ const Title = style.h1`
   margin-top: 0px;
 `;
 const Subtitle = style.div`
-  font-size: 0.3em;
+  font-size: 0.35em;
   letter-spacing: 2px;
   text-transform: uppercase;
 `;
