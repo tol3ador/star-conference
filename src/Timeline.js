@@ -9,7 +9,7 @@ const Loader = style.div`
     top: 50%;
 `;
 
-class Sessions extends Component {
+class Timeline extends Component {
 
     constructor(props){
         super(props);
@@ -42,7 +42,10 @@ class Sessions extends Component {
                 return (
                     <List>
                     {
-                        this.state.sessions.map((session, i) => {
+                        this.state.sessions.sort((a,b)=>{
+                            a.split`:`[0] < b.split`:`[0];
+                        })
+                        .map((session, i) => {
                             return <SessionItem session={session.session_title__c} 
                                                 time={session.time__c}/>
                         })
@@ -54,5 +57,5 @@ class Sessions extends Component {
     }
   }
   
-export default Sessions;
+export default Timeline;
   
