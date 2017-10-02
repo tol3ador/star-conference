@@ -35,7 +35,7 @@ class Speakers extends Component {
       return (
         <List>
         {
-            speakersList.sort((a, b)=>{
+            this.state.speakerList.sort((a, b)=>{
                 return a.full_name__c.charAt(0) > b.full_name__c.charAt(0);
             })
             .map((speaker, i) => {
