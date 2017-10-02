@@ -32,7 +32,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = {activeTab: 1};
+    this.state = {activeTab: 0};
   }
 
   render() {
@@ -48,7 +48,8 @@ class App extends Component {
             <Tab>Speakers</Tab>
             <Tab>Sessions</Tab>
           </Tabs>
-          {this.state.activeTab === 0 ? <Speakers/> : <div>TODO: Implement sessions view</div>}
+         <Speakers hide={activeTab != 0}/>
+         <Sessions hide={activeTab != 1}/>
         </Content>
       </div>
     );
