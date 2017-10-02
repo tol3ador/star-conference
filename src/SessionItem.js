@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { ListItem, ListItemContent } from 'react-mdl';
+import { ListItem, ListItemContent, ListItemProps } from 'react-mdl';
 
 class SessionItem extends Component {
     render() {
         return (        
             <ListItem twoLine>
-                <ListItemContent avatar="stars" subtitle={this.props.time}>
+                <ListItemContent avatar="stars" >
                     {this.props.session}                    
                 </ListItemContent>
+                <ListItemProps>
+                    {this.props.time}
+                </ListItemProps>
             </ListItem>
         );
       }
