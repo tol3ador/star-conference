@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-//import style from 'styled-components';
+import style from 'styled-components';
 import SpeakerItem from './SpeakerItem.js';
-import { List } from 'react-mdl';
+import { List, Spinner } from 'react-mdl';
 
 const Loader = style.div`
     position: absolute;
@@ -29,7 +29,12 @@ class Speakers extends Component {
 
     render() {
         if(this.state.loading){
-            return <Loader className="mdl-spinner mdl-js-spinner is-active" />
+            return ( 
+                <Loader>
+                    <Spinner/>
+                </Loader>
+            );
+
         }else{
             if(this.props.hide){
                 return <span></span>
