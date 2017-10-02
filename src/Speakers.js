@@ -6,6 +6,7 @@ import { List, Spinner } from 'react-mdl';
 const Loader = style.div`
     position: absolute;
     left: 50%;
+    top: 50%;
 `;
 
 class Speakers extends Component {
@@ -34,10 +35,9 @@ class Speakers extends Component {
                     <Spinner/>
                 </Loader>
             );
-
         }else{
             if(this.props.hide){
-                return <span></span>
+                return;
             }else{
                 return (
                     <List>

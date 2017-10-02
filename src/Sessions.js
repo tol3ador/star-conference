@@ -1,12 +1,56 @@
 import React, { Component } from 'react';
-//import { List } from 'react-mdl';
+import style from 'styled-components';
+import SessionItem from './SessionItem.js';
+import { List, Spinner } from 'react-mdl';
+
+const Loader = style.div`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+`;
 
 class Sessions extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {sessions: []}
+        this.state = {loading: true}
+    }
+
+    componentDidMount(){
+        fetch(`/sessions`)
+        .then(data => data.json())
+        .then(items => {
+            this.setState({
+                sessions: items,
+                loading: false
+            })
+        })
+    }
+
     render() {
-        return (
-            <div> TODO: Implement this </div>
-        );
+        if(this.state.loading){
+            return ( 
+                <Loader>
+                    <Spinner/>
+                </Loader>
+            );
+        }else{
+            if(this.props.hide){
+                return;
+            }else{
+                return (
+                    <List>
+                    {
+                        this.state.sessions.map((session, i) => {
+                            return <SessionItem session={session.session_title__c} 
+                                                time={session.time__c}/>
+                        })
+                    }
+                    </List>
+                );
+            }
+        }
     }
   }
   
