@@ -29,15 +29,15 @@ class Timeline extends Component {
     }
 
     render() {
-        if(this.state.loading){
-            return ( 
-                <Loader>
-                    <Spinner/>
-                </Loader>
-            );
+        if(this.state.hide){
+            return null;
         }else{
-            if(this.props.hide){
-                return null;
+            if(this.props.loading){
+                return( 
+                    <Loader>
+                        <Spinner/>
+                    </Loader>
+                );
             }else{
                 return (
                     <List>
