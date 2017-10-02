@@ -9,10 +9,10 @@ const Loader = style.div`
     top: 50%;
 `;
 
-const timeToMinutes = (timeString) =>
+const timeToMinutes = function(timeString)
 {
     return eval(timeString.split`:`.map((part, index)=>{
-        index ? part : 60*part;
+        index ? +part : 60*part
     }).join`+`);
 }
 
