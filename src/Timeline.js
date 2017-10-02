@@ -39,7 +39,7 @@ class Timeline extends Component {
                     <List>
                     {
                         this.state.sessions.sort((a,b)=>{
-                            a.time__c.split`:`[0] < b.time__c.split`:`[0];
+                            return a.time__c.split`:`[0] < b.time__c.split`:`[0];
                         })
                         .map((session, i) => {
                             return <SessionItem session={session.session_title__c} 
