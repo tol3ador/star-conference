@@ -11,9 +11,11 @@ const Loader = style.div`
 
 const timeToMinutes = function(timeString)
 {
-    return eval(timeString.split`:`.map((part, index)=>{
-        index ? +part : 60*part
-    }).join`+`);
+    return timeString.split`:`.map((part, index)=>{
+        return index ? +part : 60*part
+    }).reduce((minutes, sum) => {
+        return sum+=minutes;
+    }, 0);
 }
 
 class Timeline extends Component {
@@ -37,7 +39,11 @@ class Timeline extends Component {
 
     render() {
         if(this.state.loading && !this.props.hide){
-            return null;
+            return (
+                <Loader>
+                    <Spinner/>
+                </Loader>
+            );
         }else{
             if(this.props.hide){
                 return null;
