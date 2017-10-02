@@ -5,7 +5,7 @@ class SessionItem extends Component {
     render() {
         return (        
             <ListItem twoLine>
-                <ListItemContent subtitle={this.props.time}>
+                <ListItemContent avatar="cast" subtitle={this.props.time}>
                     {this.props.session}                    
                 </ListItemContent>
             </ListItem>
