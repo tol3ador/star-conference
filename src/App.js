@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import style from 'styled-components';
 import Speakers from './Speakers.js';
+import Sessions from './Sessions.js';
 import { Tabs, Tab } from 'react-mdl';
 
 const Content = style.div`
@@ -48,8 +49,8 @@ class App extends Component {
             <Tab>Speakers</Tab>
             <Tab>Sessions</Tab>
           </Tabs>
-         <Speakers hide={activeTab != 0}/>
-         <Sessions hide={activeTab != 1}/>
+         <Speakers hide={this.state.activeTab !== 0}/>
+         <Sessions hide={this.state.activeTab !== 1}/>
         </Content>
       </div>
     );

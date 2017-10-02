@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List } from 'react-mdl';
+//import { List } from 'react-mdl';
 
 class Sessions extends Component {
 

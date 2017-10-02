@@ -23,7 +23,7 @@ class Speakers extends Component {
     }
 
     render() {
-        if(loading){
+        if(this.state.loading){
             return <Spinner />
         }else{
             if(this.props.hide){
