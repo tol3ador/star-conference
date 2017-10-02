@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListItem, ListItemContent, ListItemProps } from 'react-mdl';
+import { ListItem, ListItemContent, ListItemAction } from 'react-mdl';
 
 class SessionItem extends Component {
     render() {
@@ -8,9 +8,9 @@ class SessionItem extends Component {
                 <ListItemContent avatar="stars" >
                     {this.props.session}                    
                 </ListItemContent>
-                <ListItemProps>
+                <ListItemAction>
                     {this.props.time}
-                </ListItemProps>
+                </ListItemAction>
             </ListItem>
         );
       }
