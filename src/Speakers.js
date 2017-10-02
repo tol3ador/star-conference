@@ -29,30 +29,32 @@ class Speakers extends Component {
     }
 
     render() {
-        if(this.props.hide){
-            return null;
-        }
-        if(this.state.loading){
+        if(this.state.loading && !this.state.hide){
             return ( 
                 <Loader>
                     <Spinner/>
                 </Loader>
             );
-        }
-        return (
-            <List>
-            {
-                this.state.speakers.sort((a,b)=>{
-                    a.full_name__c.charAt(0) < b.full_name__c.charAt(0);
-                })
-                .map((speaker, i) => {
-                    return <SpeakerItem name={speaker.full_name__c} 
-                                        image="https://www.vegaitsourcing.rs/media/1899/nenad-percic_website.jpg"
-                                        session={speaker.session_title__c}/>
-                })
+        }else{
+            if(this.props.hide){
+                return null;
+            }else{
+                return (
+                    <List>
+                    {
+                        this.state.speakers.sort((a,b)=>{
+                            a.full_name__c.charAt(0) < b.full_name__c.charAt(0);
+                        })
+                        .map((speaker, i) => {
+                            return <SpeakerItem name={speaker.full_name__c} 
+                                                image="https://www.vegaitsourcing.rs/media/1899/nenad-percic_website.jpg"
+                                                session={speaker.session_title__c}/>
+                        })
+                    }
+                    </List>
+                );
             }
-            </List>
-        );
+        }
     }
   }
   

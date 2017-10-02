@@ -29,33 +29,29 @@ class Timeline extends Component {
     }
 
     render() {
-        if(this.state.hide){
+        if(this.state.loading && !this.props.hide){
             return null;
-        }
-        
-        if(this.props.loading){
-            return ( 
-                <Loader>
-                    <Spinner/>
-                </Loader>
-            );
-        }
-
-        return (
-            <List>
-            {
-                this.state.sessions.sort((a,b)=>{
-                    a.time__c.split`:`[0] < b.time__c.split`:`[0];
-                })
-                .map((session, i) => {
-                    return <SessionItem session={session.session_title__c} 
-                                        time={session.time__c}/>
-                })
+        }else{
+            if(this.props.hide){
+                return null;
+            }else{
+                return (
+                    <List>
+                    {
+                        this.state.sessions.sort((a,b)=>{
+                            a.time__c.split`:`[0] < b.time__c.split`:`[0];
+                        })
+                        .map((session, i) => {
+                            return <SessionItem session={session.session_title__c} 
+                                                time={session.time__c}/>
+                        })
+                    }
+                    </List>
+                );
             }
-            </List>
-        );
+        }
     }
-}
+  }
   
 export default Timeline;
   
