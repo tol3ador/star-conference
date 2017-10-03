@@ -43,12 +43,11 @@ class Speakers extends Component {
                     <List>
                     {
                         this.state.speakers.sort((a,b)=>{
-                            return a.full_name__c.charAt(0) > b.full_name__c.charAt(0);
+                            return a.name__c.charAt(0) > b.name__c.charAt(0);
                         })
                         .map((speaker, i) => {
-                            return <SpeakerItem name={speaker.full_name__c} 
-                                                image="https://www.vegaitsourcing.rs/media/1899/nenad-percic_website.jpg"
-                                                session={speaker.session_title__c}/>
+                            return <SpeakerItem name={speaker.name__c} 
+                                                image="https://www.vegaitsourcing.rs/media/1899/nenad-percic_website.jpg" />
                         })
                     }
                     </List>

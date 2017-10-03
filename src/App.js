@@ -6,6 +6,7 @@ import Timeline from './Timeline.js';
 import { Tabs, Tab } from 'react-mdl';
 
 const Content = style.div`
+  margin-top: -20px;
 `;
 const Header = style.div`
   text-align: center;
@@ -44,11 +45,11 @@ class App extends Component {
           <Title>Star</Title>
           <Subtitle>Conference</Subtitle>
         </Header>
-        <Content>
-          <Tabs activeTab={this.state.activeTab} onChange={(tabId)=> this.setState({activeTab: tabId})} ripple>
+        <Tabs activeTab={this.state.activeTab} onChange={(tabId)=> this.setState({activeTab: tabId})} ripple>
             <Tab>Timeline</Tab>
             <Tab>Speakers</Tab>
           </Tabs>
+        <Content>
          <Timeline hide={this.state.activeTab !== 0}/>
          <Speakers hide={this.state.activeTab !== 1}/>
         </Content>
