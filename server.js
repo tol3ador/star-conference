@@ -67,7 +67,7 @@ if(DEVELOPMENT){
                     console.error(err);
                     response.send("Error "+ err);
                 }else{
-                    repsonse.send("OK");
+                    response.send("OK");
                 }
             });
         });
