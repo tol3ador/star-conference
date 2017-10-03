@@ -53,8 +53,7 @@ class Timeline extends Component {
                     {
                         this.state.sessions.sort((a,b)=>{
                             //TimeFormat YYYY-MM-DDTHH:MM:SS.SSSZ
-                            //return timeToMinutes(a.time__c.substring(11,16)) > timeToMinutes(b.time__c.substring(11,16));
-                            return false;
+                            return timeToMinutes(a.time__c.substring(11,16)) > timeToMinutes(b.time__c.substring(11,16));
                         })
                         .map((session, i) => {
                             return <SessionItem title={session.title__c} 

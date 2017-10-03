@@ -33,7 +33,7 @@ class SessionItem extends Component {
     render() {
         return (        
             <ListItem twoLine>
-                <ListItemContent avatar="stars" subheader={this.props.time} >
+                <ListItemContent avatar="stars" subheader="TEST SUBHEADER" >
                     {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
