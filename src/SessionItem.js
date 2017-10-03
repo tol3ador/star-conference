@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import { ListItem, ListItemContent, ListItemAction, Icon, Badge } from 'react-mdl';
 
+const pushStars = function(id){
+    fetch('/rate', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: id
+        })
+      })
+}
+
 class SessionItem extends Component {
     constructor(props){
         super(props);
@@ -32,6 +45,7 @@ class SessionItem extends Component {
                                 rated: true,
                                 stars: this.state.stars+1
                                 });
+                            pushStars(this.props.name);
                         }}/>
                     </Badge> 
                 </ListItemAction>
