@@ -9,7 +9,7 @@ const pushStars = function(id){
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: id
+          name: id,
         })
       })
 }

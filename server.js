@@ -19,6 +19,10 @@ app.get('/', (request, response) => {
 
 
 if(DEVELOPMENT){
+    app.post('/rate', (request, response) => {
+        response.send("OK - DUMMY!");
+    });
+
     app.get('/speakers', (request, response)=>{
         response.send([{"name":"SP-012","name__c":"Dejan Ostojić","image__c":null},{"name":"SP-013","name__c":"Ivana Tešanović","image__c":null},{"name":"SP-014","name__c":"Milan Kosanović","image__c":null},{"name":"SP-015","name__c":"Milan Kosanović","image__c":null},{"name":"SP-016","name__c":"Miroljub Enjaković","image__c":null},{"name":"SP-017","name__c":"Miloš Davidović","image__c":null},{"name":"SP-018","name__c":"Nenad Maljugić","image__c":null},{"name":"SP-019","name__c":"Ognjen Stanić","image__c":null}]);
     });
@@ -57,7 +61,7 @@ if(DEVELOPMENT){
 
     app.post('/rate', (request, response) =>{
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query(`UPDATE salesforce.Session__c SET stars__c = stars__c+1 WHERE name= ${request.body.name}`, (err, result) => {
+            client.query(`UPDATE salesforce.Session__c SET stars__c = stars__c+1 WHERE name = ${request.body.name}`, (err, result) => {
                 done();
                 if(err){
                     console.error(err);
