@@ -56,11 +56,11 @@ class Timeline extends Component {
                             return timeToMinutes(a.time__c.substring(11,16)) > timeToMinutes(b.time__c.substring(11,16));
                         })
                         .map((session, i) => {
-                            return <SessionItem session={session.title__c} 
+                            return <SessionItem title={session.title__c} 
                                                 time={session.time__c.substring(11,16)}
                                                 stars={session.stars__c}
-                                                rated={false}
-                                                name={session.name}/>
+                                                rated={false} //TODO: READ COOKIE!
+                                                id={session.id}/>
                         })
                     }
                     </List>

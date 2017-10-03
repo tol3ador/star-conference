@@ -47,7 +47,7 @@ if(DEVELOPMENT){
 
     app.get('/sessions', (request, response) => {
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query('SELECT name, time__c, duration__c, title__c, type__c, description__c, stars__c, speakers__c FROM salesforce.Session__c', (err, result) => {
+            client.query('SELECT id, time__c, duration__c, title__c, type__c, description__c, stars__c, speakers__c FROM salesforce.Session__c', (err, result) => {
                 done();
                 if(err){
                     console.error(err);
@@ -61,7 +61,7 @@ if(DEVELOPMENT){
 
     app.post('/rate', (request, response) =>{
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query(`UPDATE salesforce.Session__c SET stars__c = stars__c+1 WHERE name = ${request.body.name}`, (err, result) => {
+            client.query(`UPDATE salesforce.Session__c SET stars__c = stars__c+1 WHERE id = ${request.body.id}`, (err, result) => {
                 done();
                 if(err){
                     console.error(err);

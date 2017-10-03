@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListItem, ListItemContent, ListItemAction, Icon, Badge } from 'react-mdl';
 
-const pushStars = function(id){
+const pushStars = function(value){
     fetch('/rate', {
         method: 'POST',
         headers: {
@@ -9,7 +9,7 @@ const pushStars = function(id){
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: id,
+          id: value,
         })
       })
 }
@@ -34,7 +34,7 @@ class SessionItem extends Component {
         return (        
             <ListItem twoLine>
                 <ListItemContent avatar="stars" subheader={this.props.time} >
-                    {this.props.session}
+                    {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
                     <Badge text={this.state.stars}>
@@ -45,7 +45,7 @@ class SessionItem extends Component {
                                 rated: true,
                                 stars: this.state.stars+1
                                 });
-                            pushStars(this.props.name);
+                            pushStars(this.props.id);
                         }}/>
                     </Badge> 
                 </ListItemAction>
