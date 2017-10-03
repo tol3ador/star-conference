@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
-import { ListItem, ListItemContent, ListItemAction } from 'react-mdl';
+import { ListItem, ListItemContent, ListItemAction, Icon, Badge } from 'react-mdl';
 
 class SessionItem extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            rated: false,
+            stars: 0
+        }
+    }
+
+    componentDidMount(){
+        this.setState({
+           rated: this.props.rated, 
+           stars: this.props.stars
+        })
+    }
+
     render() {
         return (        
             <ListItem twoLine>
-                <ListItemContent avatar="stars" >
-                    {this.props.session}                    
+                <ListItemContent avatar="stars" subheader={this.props.time} >
+                    {this.props.session}
                 </ListItemContent>
                 <ListItemAction>
-                    {this.props.time}
+                    <Badge text={this.state.stars}>
+                        <Icon name={this.state.rated ? "star" : "star_border"} onClick={() => {
+                            if(this.state.rated)
+                                return;
+                            this.setState({
+                                rated: true,
+                                stars: this.state.stars+1
+                                });
+                        }}/>
+                    </Badge> 
                 </ListItemAction>
             </ListItem>
         );

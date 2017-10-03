@@ -57,7 +57,9 @@ class Timeline extends Component {
                         })
                         .map((session, i) => {
                             return <SessionItem session={session.title__c} 
-                                                time={session.time__c.substring(11,16)}/>
+                                                time={session.time__c.substring(11,16)}
+                                                stars={session.stars__c}
+                                                rated={false}/>
                         })
                     }
                     </List>
