@@ -53,11 +53,11 @@ class Timeline extends Component {
                     {
                         this.state.sessions.sort((a,b)=>{
                             //TimeFormat YYYY-MM-DDTHH:MM:SS.SSSZ
-                            return timeToMinutes(a.time__c.substring(11,16)) > timeToMinutes(b.time__c.substring(11,16));
+                            //return timeToMinutes(a.time__c.substring(11,16)) > timeToMinutes(b.time__c.substring(11,16));
                         })
                         .map((session, i) => {
                             return <SessionItem title={session.title__c} 
-                                                time={session.time__c.substring(11,16)}
+                                                time={session.time__c}
                                                 stars={session.stars__c}
                                                 rated={false} //TODO: READ COOKIE!
                                                 id={session.id}/>
