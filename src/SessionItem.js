@@ -32,7 +32,7 @@ class SessionItem extends Component {
 
     render() {
         return (        
-            <ListItem twoLine>
+            <ListItem threeLine>
                 <ListItemContent avatar="stars" subtitle={this.props.time} >
                     {this.props.title}
                 </ListItemContent>
