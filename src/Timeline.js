@@ -58,7 +58,7 @@ class Timeline extends Component {
                         })
                         .map((session, i) => {
                             return <SessionItem title={session.title__c} 
-                                                time={session.time__c}
+                                                time={session.time__c.substring(11, 16)}
                                                 stars={session.stars__c}
                                                 rated={false} //TODO: READ COOKIE!
                                                 id={session.id}/>
