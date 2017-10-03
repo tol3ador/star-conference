@@ -20,7 +20,7 @@ app.get('/', (request, response) => {
 
 if(DEVELOPMENT){
     app.post('/rate', (request, response) => {
-        response.send("OK - DUMMY!");
+        response.send("Mock: OK");
     });
 
     app.get('/speakers', (request, response)=>{
