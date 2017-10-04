@@ -52,7 +52,7 @@ class Speakers extends Component {
                     })
                     .map((speaker, i) => {
                         return <SpeakerItem name={speaker.name__c} 
-                                            image="https://www.vegaitsourcing.rs/media/1899/nenad-percic_website.jpg" />
+                                            image={speaker.image__c} />
                     })
                 }
                 </List>

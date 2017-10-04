@@ -40,7 +40,7 @@ class SessionItem extends Component {
                 </ListItemContent>
                 <ListItemAction>
                     <Badge text={this.state.stars}>
-                        <Icon name={this.state.rated ? "star" : "star_border"} onClick={() => {
+                        <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
                             if(this.state.rated)
                                 return;
                             this.setState({

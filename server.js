@@ -50,7 +50,7 @@ if(DEVELOPMENT){
                 done();
                 if(err){
                     console.error(err);
-                    reponse.send("Error "+ err);
+                    response.send("Error "+ err);
                 }else{
                     response.send(result.rows);
                 }
