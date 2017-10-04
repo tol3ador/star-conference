@@ -6,7 +6,7 @@ import Timeline from './Timeline.js';
 import { Tabs, Tab } from 'react-mdl';
 
 const Content = style.div`
-  margin-top: -20px;
+ 
 `;
 const Header = style.div`
   text-align: center;

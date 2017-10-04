@@ -50,7 +50,7 @@ class Speakers extends Component {
                     this.state.speakers.sort((a,b)=>{
                         return a.name__c.charAt(0) > b.name__c.charAt(0);
                     })
-                    .map((speaker, i) => {
+                    .map(speaker => {
                         return <SpeakerItem name={speaker.name__c} 
                                             image={speaker.image__c} />
                     })

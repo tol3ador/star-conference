@@ -1,41 +1,33 @@
 import React, { Component } from 'react';
-import { ListItem, ListItemContent, ListItemAction, Icon, Tooltip } from 'react-mdl';
+import { Card, CardTitle, CardActions, Icon } from 'react-mdl';
 import style from 'styled-components';
 
-const AvatarWrapper = style.div`
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    border-radius:50%;
-    position: relative;
-    margin-right: 16px;
+const One = style.div`
+    width: 256px;
+    height: 256px;
+    background: url('https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAArbAAAAJGRlMmZjYmViLWUyNDItNDUxZC1hZGJmLTgyOGVjZTFmZjQzNA.jpg') center / cover;
 `;
 
-const Avatar = style.img`
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    width: 125%;
-    height: 125%;
+const Two = style.div`
+    height: 52px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.2);
+`;
+const Three = style.div`
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
 `;
 
 class SpeakerItem extends Component {
     render() {
         return (        
-            <ListItem twoLine>
-                <AvatarWrapper>
-                    <Avatar src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAArbAAAAJGRlMmZjYmViLWUyNDItNDUxZC1hZGJmLTgyOGVjZTFmZjQzNA.jpg" />
-                </AvatarWrapper>
-                <ListItemContent subtitle={this.props.session}>
-                    {this.props.name}                
-                </ListItemContent>
-                <ListItemAction>
-                    <Tooltip label="Suggestion box">
-                        <Icon name="speaker_notes" />
-                    </Tooltip>
-                </ListItemAction>
-            </ListItem>
+            <One className="demo-card-image mdl-card mdl-shadow--2dp">
+                <div className="mdl-card__title mdl-card--expand"></div>
+                <Three className="mdl-card__actions">
+                    <Two className="demo-card-image__filename">Image.jpg</Two>
+                </Three>
+            </One>
         );
       }
 }
