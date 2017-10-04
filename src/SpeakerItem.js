@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { ListItem, ListItemContent, ListItemAction, IconToggle } from 'react-mdl';
+import { ListItem, ListItemContent, ListItemAction, Icon, Tooltip } from 'react-mdl';
 import style from 'styled-components';
 
 const AvatarWrapper = style.div`
+    width: 40px;
+    height: 40px;
     overflow: hidden;
     border-radius:50%;
     position: relative;
+    margin-right: 16px;
 `;
 
 const Avatar = style.img`
@@ -13,19 +16,24 @@ const Avatar = style.img`
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    width: 150%;
-    height: 150%;
+    width: 125%;
+    height: 125%;
 `;
 
 class SpeakerItem extends Component {
     render() {
         return (        
             <ListItem twoLine>
-                <ListItemContent avatar={<AvatarWrapper> <Avatar src={this.props.image} /> </AvatarWrapper>} subtitle={this.props.session}>
-                    {this.props.name}                    
+                <AvatarWrapper>
+                    <Avatar src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAArbAAAAJGRlMmZjYmViLWUyNDItNDUxZC1hZGJmLTgyOGVjZTFmZjQzNA.jpg" />
+                </AvatarWrapper>
+                <ListItemContent subtitle={this.props.session}>
+                    {this.props.name}                
                 </ListItemContent>
                 <ListItemAction>
-                    <IconToggle name="speaker_notes" />
+                    <Tooltip label="Suggestion box">
+                        <Icon name="speaker_notes" />
+                    </Tooltip>
                 </ListItemAction>
             </ListItem>
         );
