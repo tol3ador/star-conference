@@ -36,23 +36,19 @@ class Speakers extends Component {
                 </Loader>
             );
         }else{
-            if(this.props.hide){
-                return null;
-            }else{
-                return (
-                    <List>
-                    {
-                        this.state.speakers.sort((a,b)=>{
-                            return a.name__c.charAt(0) > b.name__c.charAt(0);
-                        })
-                        .map((speaker, i) => {
-                            return <SpeakerItem name={speaker.name__c} 
-                                                image="https://www.vegaitsourcing.rs/media/1899/nenad-percic_website.jpg" />
-                        })
-                    }
-                    </List>
-                );
-            }
+            return (
+                <List>
+                {
+                    this.state.speakers.sort((a,b)=>{
+                        return a.name__c.charAt(0) > b.name__c.charAt(0);
+                    })
+                    .map((speaker, i) => {
+                        return <SpeakerItem name={speaker.name__c} 
+                                            image="https://www.vegaitsourcing.rs/media/1899/nenad-percic_website.jpg" />
+                    })
+                }
+                </List>
+            );
         }
     }
   }

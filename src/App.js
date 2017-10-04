@@ -38,6 +38,13 @@ class App extends Component {
   }
 
   render() {
+    const SpeakersWrapper = style.div`
+      display: ${this.state.activeTab !== 1 ? 'none' : 'initial'};
+    `;
+  
+    const TimelineWrapper = style.div`
+      display: ${this.state.activeTab !== 0 ? 'none' : 'initial'};
+    `;
     return (
       <div>
         <Header>
@@ -50,8 +57,12 @@ class App extends Component {
             <Tab>Speakers</Tab>
           </Tabs>
         <Content>
-         <Timeline hide={this.state.activeTab !== 0}/>
-         <Speakers hide={this.state.activeTab !== 1}/>
+          <TimelineWrapper>
+            <Timeline />
+          </TimelineWrapper>
+          <SpeakersWrapper>
+            <Speakers />
+          </SpeakersWrapper>
         </Content>
       </div>
     );

@@ -12,6 +12,8 @@ const pushStars = function(value){
           id: value,
         })
       })
+
+    localStorage.setItem(value, true);
 }
 
 class SessionItem extends Component {
@@ -32,7 +34,7 @@ class SessionItem extends Component {
 
     render() {
         return (        
-            <ListItem threeLine>
+            <ListItem twoLine>
                 <ListItemContent avatar="stars" subtitle={this.props.time} >
                     {this.props.title}
                 </ListItemContent>
