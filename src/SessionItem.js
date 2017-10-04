@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListItem, ListItemContent, ListItemAction, Icon, Badge } from 'react-mdl';
 
-const pushStars = function(value){
+const pushStars = function(value, name){
     fetch('/rate', {
         method: 'POST',
         headers: {
@@ -12,8 +12,8 @@ const pushStars = function(value){
           id: value,
         })
       })
-
-    localStorage.setItem(value, true);
+    let ratings = localStorage.getItem('ratings')||"";
+    localStorage.setItem('ratings', ratings+"|"+name);
 }
 
 class SessionItem extends Component {
@@ -27,7 +27,7 @@ class SessionItem extends Component {
 
     componentDidMount(){
         this.setState({
-           rated: this.props.rated, 
+           rated: (localStorage.getItem('ratings')||"").indexOf(this.props.name) !== -1, 
            stars: this.props.stars
         })
     }
@@ -47,7 +47,7 @@ class SessionItem extends Component {
                                 rated: true,
                                 stars: this.state.stars+1
                                 });
-                            pushStars(this.props.id);
+                            pushStars(this.props.id, this.props.name);
                         }}/>
                     </Badge> 
                 </ListItemAction>

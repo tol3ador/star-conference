@@ -56,7 +56,7 @@ class Timeline extends Component {
                         return <SessionItem title={session.title__c} 
                                             time={session.time__c.substring(11, 16)}
                                             stars={session.stars__c}
-                                            rated={localStorage.getItem(session.id)||false}
+                                            name={session.name}
                                             id={session.id}/>
                     })
                 }
