@@ -18,14 +18,22 @@ class Speakers extends Component {
     }
 
     componentDidMount(){
-        fetch(`/speakers`)
-        .then(data => data.json())
-        .then(items => {
+        if(process.env.NODE_ENV !== 'production'){
+            let data = [{"name":"SP-013","name__c":"Ivana Tešanović","image__c":null},{"name":"SP-014","name__c":"Milan Kosanović","image__c":null},{"name":"SP-015","name__c":"Milan Kosanović","image__c":null},{"name":"SP-016","name__c":"Miroljub Enjaković","image__c":null},{"name":"SP-017","name__c":"Miloš Davidović","image__c":null},{"name":"SP-018","name__c":"Nenad Maljugić","image__c":null},{"name":"SP-012","name__c":"Dejan Ostojić","image__c":null},{"name":"SP-019","name__c":"Ognjen Stanić","image__c":null}];
             this.setState({
-                speakers: items,
+                speakers: data,
                 loading: false
             })
-        })
+        }else{
+            fetch(`/speakers`)
+            .then(data => data.json())
+            .then(items => {
+                this.setState({
+                    speakers: items,
+                    loading: false
+                })
+            })
+        }
     }
 
     render() {
