@@ -44,7 +44,7 @@ class Speakers extends Component {
                 </Loader>
             );
         }else{
-            return (
+            return this.props.hide ? null : (
                 <List>
                 {
                     this.state.speakers.sort((a,b)=>{

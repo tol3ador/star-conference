@@ -53,7 +53,7 @@ class Timeline extends Component {
                 </Loader>
             );
         }else{
-            return (
+            return this.props.hide ? null : (
                 <List>
                 {
                     this.state.sessions.sort((a,b)=>{
