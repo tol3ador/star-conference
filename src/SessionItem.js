@@ -12,8 +12,8 @@ const pushStars = function(value, name){
           id: value,
         })
       })
-    let ratings = localStorage.getItem('ratings')||"";
-    localStorage.setItem('ratings', ratings+"|"+name);
+    let items = localStorage.getItem('ratings')||"";
+    localStorage.setItem('ratings', items+name);
 }
 
 class SessionItem extends Component {
