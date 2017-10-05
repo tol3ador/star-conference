@@ -35,7 +35,7 @@ class SessionItem extends Component {
     render() {
 
         return (        
-            <ListItem twoLine style={{backgroundColor: this.props.type === "Break" ? '#407492' : this.props.type === "Panel Discussion" ? '#F15A2B' : ''}}>
+            <ListItem twoLine style={{backgroundColor: this.props.type === "Break" ? '' : this.props.type === "Party" ? '#F15A2B' : '#407492'}}>
                 <ListItemContent avatar="stars" subtitle={this.props.time} >
                     {this.props.title}
                 </ListItemContent>
