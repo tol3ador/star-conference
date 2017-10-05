@@ -34,7 +34,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = {activeTab: 1};
+    this.state = {activeTab: 0};
   }
 
   render() {
