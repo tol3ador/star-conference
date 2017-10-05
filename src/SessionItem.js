@@ -41,20 +41,7 @@ class SessionItem extends Component {
                 </ListItemContent>
                 <ListItemAction>
                     <Badge text={this.state.stars}>
-                        { this.props.type === "Break" ? 
-                        
-                            <h4 onClick={() => {
-                                if(this.state.rated)
-                                    return;
-                                this.setState({
-                                    rated: true,
-                                    stars: this.state.stars+1
-                                    });
-                                pushStars(this.props.id, this.props.name);
-                            }}>
-                                {this.props.duration}
-                            </h4>
-                        : 
+                        { this.props.type === "Break" ? <h4>{this.props.duration}</h4> : 
                             <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
                                 if(this.state.rated)
                                     return;
