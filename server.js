@@ -46,7 +46,7 @@ if(DEVELOPMENT){
     });
     app.get('/sessions', (request, response) => {
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query('SELECT id, name, time__c, duration__c, title__c, type__c, description__c, stars__c, speakers__c FROM salesforce.Session__c', (err, result) => {
+            client.query('SELECT id, name, time__c, duration__c, title__c, type__c, description__c, stars__c, FROM salesforce.Session__c', (err, result) => {
                 done();
                 if(err){
                     console.error(err);
