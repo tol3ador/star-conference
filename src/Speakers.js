@@ -47,8 +47,8 @@ class Speakers extends Component {
             return this.props.hide ? null : (
                 <List>
                 {
-                    this.state.speakers.sort((a,b)=>{
-                        return a.name__c.charAt(0) > b.name__c.charAt(0);
+                    this.state.speakers.sort((a,b)=>{ 
+                        return a.name__c == 'Mystery Speaker' ? true : a.name__c.charAt(0) > b.name__c.charAt(0);
                     })
                     .map(speaker => {
                         return <SpeakerItem name={speaker.name__c} 
