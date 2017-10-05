@@ -52,6 +52,8 @@ class Timeline extends Component {
                                             time={session.time__c.substring(11, 16)}
                                             stars={session.stars__c}
                                             name={session.name}
+                                            type={session.type__c}
+                                            duration={session.duration__c}
                                             id={session.id}/>
                     })
                 }

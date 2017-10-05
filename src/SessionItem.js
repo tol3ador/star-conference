@@ -33,22 +33,39 @@ class SessionItem extends Component {
     }
 
     render() {
+
         return (        
-            <ListItem twoLine>
+            <ListItem twoLine style={{backgroundColor: this.props.type === "Break" ? '#407492' : this.props.type === "Panel Discussion" ? '#F15A2B' : ''}}>
                 <ListItemContent avatar="stars" subtitle={this.props.time} >
                     {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
                     <Badge text={this.state.stars}>
-                        <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
-                            if(this.state.rated)
-                                return;
-                            this.setState({
-                                rated: true,
-                                stars: this.state.stars+1
-                                });
-                            pushStars(this.props.id, this.props.name);
-                        }}/>
+                        { this.props.type === "Break" ? 
+                        
+                            <h4 onClick={() => {
+                                if(this.state.rated)
+                                    return;
+                                this.setState({
+                                    rated: true,
+                                    stars: this.state.stars+1
+                                    });
+                                pushStars(this.props.id, this.props.name);
+                            }}>
+                                {this.props.duration}
+                            </h4>
+                        : 
+                            <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
+                                if(this.state.rated)
+                                    return;
+                                this.setState({
+                                    rated: true,
+                                    stars: this.state.stars+1
+                                    });
+                                pushStars(this.props.id, this.props.name);
+                            }}/>
+                        }
+                        
                     </Badge> 
                 </ListItemAction>
             </ListItem>

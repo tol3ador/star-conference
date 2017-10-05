@@ -47,11 +47,7 @@ class Speakers extends Component {
             return this.props.hide ? null : (
                 <Grid>
                 {
-                    this.state.speakers.sort((a,b)=>{ 
-                        return a.name__c.charAt(0) > b.name__c.charAt(0);
-                    })
-
-                    .map(speaker => {
+                    this.state.speakers.map(speaker => {
                         return (
                             <Cell col = {2} >
                                 <SpeakerItem name={speaker.name__c} image={speaker.image__c} />
