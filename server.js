@@ -33,7 +33,7 @@ if(DEVELOPMENT){
 }else{
     app.get('/speakers', (request, response) => {
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query('SELECT name, name__c, image__c FROM salesforce.Speaker__c', (err, result) => {
+            client.query('SELECT name, name__c, image__c, session_title__c FROM salesforce.Speaker__c', (err, result) => {
                 done();
                 if (err){
                     console.error(err);
@@ -46,7 +46,7 @@ if(DEVELOPMENT){
     });
     app.get('/sessions', (request, response) => {
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query('SELECT id, name, time__c, duration__c, title__c, type__c, description__c, stars__c, FROM salesforce.Session__c', (err, result) => {
+            client.query('SELECT id, name, time__c, duration__c, title__c, type__c, description__c, stars__c, speaker_name__c FROM salesforce.Session__c', (err, result) => {
                 done();
                 if(err){
                     console.error(err);
