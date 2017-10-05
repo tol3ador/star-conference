@@ -11,6 +11,7 @@ const Loader = style.div`
 
 const timeToMinutes = function(timeString)
 {
+    //Time Format HH:MM
     return timeString.split`:`.map((part, index)=>{
         return index ? +part : 60*part
     }).reduce((minutes, sum) => {
@@ -57,8 +58,8 @@ class Timeline extends Component {
                 <List>
                 {
                     this.state.sessions.sort((a,b)=>{
-                        //TimeFormat YYYY-MM-DDTHH:MM:SS.SSSZ
-                        return timeToMinutes(a.time__c.substring(11,16)) > timeToMinutes(b.time__c.substring(11,16));
+                        //TimeDate Format YYYY-MM-DDTHH:MM:SS.SSSZ
+                        return timeToMinutes(a.time__c.substring(11, 16)) > timeToMinutes(b.time__c.substring(11,16));
                     })
                     .map((session, i) => {
                         return <SessionItem title={session.title__c} 
