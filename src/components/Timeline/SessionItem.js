@@ -33,7 +33,7 @@ class SessionItem extends Component {
 
     render() {
         return (        
-            <ListItem twoLine className={`session-item-type ${this.props.type}`}>
+            <ListItem twoLine className={`session-item-type`/* ${this.props.type*/}>
                 <ListItemContent avatar="stars" subtitle={this.props.time} >
                     {this.props.title}
                 </ListItemContent>

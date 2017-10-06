@@ -33,7 +33,7 @@ class SpeakerItem extends Component {
                 feedback: this.state.expectation,
             })
           }).then(()=>{
-                this.handleCloseDialog;
+                this.handleCloseDialog();
           })
     }
   

@@ -35,7 +35,7 @@ body {
     top: 50%;
 }
 
-.session-item-type.Break {
+.session-item-type {
     background-color: #FFFFFF;
 }
 .session-item-type.Talk {
