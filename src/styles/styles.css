@@ -34,3 +34,41 @@ body {
     left: 50%;
     top: 50%;
 }
+
+.session-item-type.Break {
+    background-color: #FFFFFF;
+}
+.session-item-type.Talk {
+    background-color: #407492;
+}
+.session-item-type.Panel.Discussion {
+    background-color: #407492;
+}
+.session-item-type.Party {
+    background-color: #F15A2B;
+}
+
+.margin-right-24 {
+    margin-right: 24px;
+}
+
+.card.speaker{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
+
+.card-actions.speaker {
+    height: 40px;
+    padding: 5px; 
+    background: rgba(0,0,0,0.15);
+}
+
+.card-description.speaker{
+    font-size: 10px; 
+    font-weight: 500;
+}
+
+.font-white {
+    color: #FFFFFF;
+}

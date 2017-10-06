@@ -24,7 +24,6 @@ class SessionItem extends Component {
             stars: 0
         }
     }
-
     componentDidMount(){
         this.setState({
            rated: (localStorage.getItem('ratings')||"").indexOf(this.props.name) !== -1, 
@@ -33,15 +32,20 @@ class SessionItem extends Component {
     }
 
     render() {
-
         return (        
-            <ListItem twoLine style={{backgroundColor: this.props.type === "Break" ? '' : this.props.type === "Party" ? '#F15A2B' : '#407492'}}>
+            <ListItem twoLine className={`session-item-type ${this.props.type}`}>
                 <ListItemContent avatar="stars" subtitle={this.props.time} >
                     {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
                     {
-                        this.props.type === "Break" ? <h4 style={{marginRight: '24px'}}>{this.props.duration}</h4> :
+                        this.props.type === "Break" ? 
+                        (
+                        <h4 className="margin-right-24">
+                            {this.props.duration}
+                        </h4> 
+                        ):
+                        (
                         <Badge text={this.state.stars}>
                                 <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
                                     if(this.state.rated)
@@ -53,6 +57,7 @@ class SessionItem extends Component {
                                     pushStars(this.props.id, this.props.name);
                                 }}/>
                         </Badge> 
+                        )
                     }
                 </ListItemAction>
             </ListItem>

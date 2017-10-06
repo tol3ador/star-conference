@@ -21,7 +21,7 @@ class App extends Component {
         </div>
         <Tabs activeTab={this.state.activeTab} onChange={(tabId)=> this.setState({activeTab: tabId})} ripple>
             <Tab>Timeline</Tab>
-            <Tab>Speakers</Tab>
+            <Tab>Predavači</Tab>
           </Tabs>
         <div className="content">
           <Timeline hide={this.state.activeTab !== 0} />
