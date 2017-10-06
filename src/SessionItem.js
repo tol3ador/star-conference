@@ -40,20 +40,20 @@ class SessionItem extends Component {
                     {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
-                    <Badge text={this.state.stars}>
-                        { this.props.type === "Break" ? <h4>{this.props.duration}</h4> : 
-                            <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
-                                if(this.state.rated)
-                                    return;
-                                this.setState({
-                                    rated: true,
-                                    stars: this.state.stars+1
-                                    });
-                                pushStars(this.props.id, this.props.name);
-                            }}/>
-                        }
-                        
-                    </Badge> 
+                    {
+                        this.props.type === "Break" ? <h4 style={{marginRight: '24px'}}>{this.props.duration}</h4> :
+                        <Badge text={this.state.stars}>
+                                <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
+                                    if(this.state.rated)
+                                        return;
+                                    this.setState({
+                                        rated: true,
+                                        stars: this.state.stars+1
+                                        });
+                                    pushStars(this.props.id, this.props.name);
+                                }}/>
+                        </Badge> 
+                    }
                 </ListItemAction>
             </ListItem>
         );

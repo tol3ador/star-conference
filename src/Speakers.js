@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import style from 'styled-components';
 import SpeakerItem from './SpeakerItem.js';
 import { Spinner, Grid, Cell } from 'react-mdl';
-
-const Loader = style.div`
-    position: absolute;
-    left: 50%;
-    top: 50%;
-`;
 
 class Speakers extends Component {
 
@@ -39,9 +32,9 @@ class Speakers extends Component {
     render() {
         if(this.state.loading && !this.state.hide){
             return ( 
-                <Loader>
+                <div className="loader">
                     <Spinner/>
-                </Loader>
+                </div>
             );
         }else{
             return this.props.hide ? null : (
