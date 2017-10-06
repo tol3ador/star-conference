@@ -57,7 +57,7 @@ class SpeakerItem extends Component {
                     <span className="card-description speaker font-white">
                         {this.props.name}
                     </span>
-                    <Icon ripple name="speaker_notes" className="font-white" onClick={this.handleOpenDialog} />
+                    <Icon ripple name="speaker_notes" className="font-white" /*onClick={this.handleOpenDialog}*/ />
                 </CardActions>
                 <Dialog open={this.state.openDialog}>
                     <DialogTitle className="feedback title">{this.props.name}</DialogTitle>
