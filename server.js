@@ -77,7 +77,7 @@ if(DEVELOPMENT){
     app.post('/feedback', (request, response) =>{
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
             client.query(`INSERT INTO salesforce.Session_Feedback__c (Speaker__c, Ocekivanja__c, Pripremljenost__c, Razumljivost__c, Metod_predavanja__c, Additional_Feedback__c) 
-                          VALUES (${request.body.speaker}, ${request.body.expectation}, ${request.body.readiness}, ${request.body.understandable}, ${request.body.method}, ${request.body.feedback})`, 
+                          VALUES ("${request.body.speaker}", "${request.body.expectation}", "${request.body.readiness}", "${request.body.understandable}", "${request.body.method}", "${request.body.feedback}")`, 
                 (err, result) => {
                 done();
                 if(err){
