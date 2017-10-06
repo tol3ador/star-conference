@@ -40,7 +40,7 @@ class Speakers extends Component {
                     this.state.speakers.map(speaker => {
                         return (
                             <Cell col = {2} >
-                                <SpeakerItem name={speaker.name__c} image={speaker.image__c} />
+                                <SpeakerItem name={speaker.name__c} image={speaker.image__c} speakerId={speaker.sfid} />
                             </Cell>
                         );
                     })

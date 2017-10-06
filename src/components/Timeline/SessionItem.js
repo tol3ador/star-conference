@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListItem, ListItemContent, ListItemAction, Icon, Badge } from 'react-mdl';
 
-const pushStars = function(value, name){
+const postStars = function(value, name){
     fetch('/rate', {
         method: 'POST',
         headers: {
@@ -54,7 +54,7 @@ class SessionItem extends Component {
                                         rated: true,
                                         stars: this.state.stars+1
                                         });
-                                    pushStars(this.props.id, this.props.name);
+                                    postStars(this.props.id, this.props.name);
                                 }}/>
                         </Badge> 
                         )

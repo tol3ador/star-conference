@@ -20,7 +20,11 @@ app.get('/', (request, response) => {
 
 if(DEVELOPMENT){
     app.post('/rate', (request, response) => {
-        response.send("Mock: OK");
+        response.send("Mock: Rating OK!");
+    });
+
+    app.post('/feedback', (request, response) => {
+        response.send("Mock: Feedback OK!");
     });
 
     app.get('/speakers', (request, response)=>{
@@ -33,7 +37,7 @@ if(DEVELOPMENT){
 }else{
     app.get('/speakers', (request, response) => {
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query('SELECT name, name__c, image__c, session_title__c FROM salesforce.Speaker__c ORDER BY name__c ASC', (err, result) => {
+            client.query('SELECT sfid, name, name__c, image__c, session_title__c FROM salesforce.Speaker__c ORDER BY name__c ASC', (err, result) => {
                 done();
                 if (err){
                     console.error(err);
@@ -60,6 +64,21 @@ if(DEVELOPMENT){
     app.post('/rate', (request, response) =>{
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
             client.query(`UPDATE salesforce.Session__c SET stars__c = stars__c+1 WHERE id = ${request.body.id}`, (err, result) => {
+                done();
+                if(err){
+                    console.error(err);
+                    response.send("Error "+ err);
+                }else{
+                    response.send("OK");
+                }
+            });
+        });
+    });
+    app.post('/feedback', (request, response) =>{
+        pg.connect(process.env.DATABASE_URL, (err, client, done) => {
+            client.query(`INSERT INTO salesforce.Session_Feedback__c (Speaker__c, Ocekivanja__c, Pripremljenost__c, Razumljivost__c, Metod_predavanja__c, Additional_Feedback__c) 
+                          VALUES (${request.body.speaker}, ${request.body.ocekivanja}, ${request.body.pripremljenost}, ${request.body.razumljivost}, ${request.body.metod}, ${request.body.feedback})`, 
+                (err, result) => {
                 done();
                 if(err){
                     console.error(err);
