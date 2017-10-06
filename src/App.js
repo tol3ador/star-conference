@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Speakers from './Speakers.js';
-import Timeline from './Timeline.js';
+import logo from './resources/logo.svg';
+import Speakers from './components/Speakers/Speakers.js';
+import Timeline from './components/Timeline/Timeline.js';
 import { Tabs, Tab } from 'react-mdl';
 
 class App extends Component {
