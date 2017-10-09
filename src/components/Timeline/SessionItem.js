@@ -34,7 +34,7 @@ class SessionItem extends Component {
     render() {
         return (        
             <ListItem twoLine className={`session-item-type`}>
-                <ListItemContent avatar="stars" /*subtitle={this.props.time}*/ >
+                <ListItemContent avatar="stars" subtitle="Start time: TBA"/*{this.props.time}*/ >
                     {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
