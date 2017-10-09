@@ -1,42 +1,59 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardActions, Icon, Button, Dialog, DialogTitle, DialogContent, DialogActions, Textfield, RadioGroup, Radio } from 'react-mdl';
+import { Card, CardTitle, CardActions, Icon, Button, Dialog, DialogTitle, DialogContent, DialogActions, Textfield } from 'react-mdl';
+import ReactStars from 'react-stars'
 
 class SpeakerItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            expectation: "5",
+            expectation: '5',
+            readiness: '5',
+            understandable: '5',
+            method: '5',
+            feedback: "",
         };
-        this.handleChange = this.handleChange.bind(this);
+
         this.handleOpenDialog = this.handleOpenDialog.bind(this);
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
-        this.handlePostFeedback = this.handlePostFeedback.bind(this);
-    }
-    
-    handleChange(e){
-       this.setState({[e.target.name]: e.target.value})
+        this.postFeedback = this.postFeedback.bind(this);
     }
 
-    handlePostFeedback(){
+    postFeedback(){
         fetch('/feedback', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-            }, // FIX BACK TO INDIVIDUAL RATES
+            }, 
             body: JSON.stringify({
                 speaker: this.props.speakerId,
                 expectation: this.state.expectation,
-                readiness: this.state.expectation,
-                understandable: this.state.expectation,
-                method: this.state.expectation,
-                feedback: this.state.expectation,
+                readiness: this.state.readiness,
+                understandable: this.state.understandable,
+                method: this.state.method,
+                feedback: this.state.feedback,
             })
           }).then(()=>{
                 this.handleCloseDialog();
           })
     }
-  
+
+    expectationChanged(newRating) { 
+        this.setState({expectation: newRating});
+    }
+    readinessChanged(newRating) { 
+        this.setState({readiness: newRating});
+    }
+    understandableChanged(newRating) { 
+        this.setState({understandable: newRating});
+    }
+    methodChanged(newRating) { 
+        this.setState({method: newRating});
+    }
+    handleFeedbackText(e){
+        this.setState({feedback: e.target.value})
+    }
+
     handleOpenDialog() {
         this.setState({
             openDialog: true
@@ -57,23 +74,32 @@ class SpeakerItem extends Component {
                     <span className="card-description speaker font-white">
                         {this.props.name}
                     </span>
-                    <Icon ripple name="speaker_notes" className="font-white" /*onClick={this.handleOpenDialog}*/ />
+                    <Icon ripple name="speaker_notes" className="font-white" onClick={this.handleOpenDialog} />
                 </CardActions>
                 <Dialog open={this.state.openDialog}>
-                    <DialogTitle className="feedback title">{this.props.name}</DialogTitle>
+                    <DialogTitle>{this.props.name}</DialogTitle>
                     <DialogContent>
-                        <RadioGroup name="expectation" value={this.state.expectation} onChange={this.handleChange}>
-                            <Radio value="1" ripple/>
-                            <Radio value="2" ripple/>
-                            <Radio value="3" ripple/>
-                            <Radio value="4" ripple/>
-                            <Radio value="5" ripple/>
-                        </RadioGroup>
-                        <Textfield floatingLabel onChange={() => {}} label="Additional feedback" rows={1} />
+                        <ReactStars size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            value={this.state.expectation}
+                            onChange={this.expectationChanged.bind(this)}
+                        />
+                        <ReactStars size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            value={this.state.readiness}
+                            onChange={this.readinessChanged.bind(this)}
+                        />
+                        <ReactStars size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            value={this.state.understandable}
+                            onChange={this.understandableChanged.bind(this)}
+                        />
+                        <ReactStars size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            value={this.state.method}
+                            onChange={this.methodChanged.bind(this)}
+                        />
+                        <Textfield floatingLabel onChange={this.handleFeedbackText.bind(this)} label="Additional feedback" rows={1} />
                     </DialogContent>
                     <DialogActions>
                         <Button type='button' onClick={this.handleCloseDialog}>Close</Button>
-                        <Button type='button' onClick={this.handlePostFeedback}>Submit</Button>
+                        <Button type='button' onClick={this.postFeedback}>Submit</Button>
                     </DialogActions>
                 </Dialog>
             </Card>
