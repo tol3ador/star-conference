@@ -6,10 +6,10 @@ class SpeakerItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            expectation: '5',
-            readiness: '5',
-            understandable: '5',
-            method: '5',
+            expectation: 5,
+            readiness: 5,
+            understandable: 5,
+            method: 5,
             feedback: 'No additional feedback',
             fetching: false,
         };
