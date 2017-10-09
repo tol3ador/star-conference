@@ -83,7 +83,7 @@ if(DEVELOPMENT){
                                     ${request.body.readiness},
                                     ${request.body.understandable},
                                     ${request.body.method},
-                                    ${request.body.feedback}
+                                    '${request.body.feedback}'
                                 )`, 
                 (err, result) => {
                 done();
