@@ -9,12 +9,12 @@ class Speakers extends Component {
         this.state = {loading: true}
     }
     componentDidMount(){
-        if(process.env.NODE_ENV !== 'production'){
+        if (process.env.NODE_ENV !== 'production') {
             this.setState({
                 speakers: require('./../../resources/static_speakers.json'),
                 loading: false
             })
-        }else{
+        } else {
             fetch(`/speakers`)
             .then(data => data.json())
             .then(items => {
@@ -27,13 +27,13 @@ class Speakers extends Component {
     }
     
     render() {
-        if(this.state.loading && !this.state.hide){
+        if (this.state.loading && !this.state.hide) {
             return ( 
                 <div className="loader">
                     <Spinner/>
                 </div>
             );
-        }else{
+        } else {
             return this.props.hide ? null : (
                 <Grid>
                 {

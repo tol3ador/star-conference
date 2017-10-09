@@ -16,9 +16,7 @@ app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 
-
-
-if(DEVELOPMENT){
+if (DEVELOPMENT) {
     app.post('/rate', (request, response) => {
         response.send("Mock: Rating OK!");
     });
@@ -65,7 +63,7 @@ if(DEVELOPMENT){
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
             client.query(`UPDATE salesforce.Session__c SET stars__c = stars__c+1 WHERE id = ${request.body.id}`, (err, result) => {
                 done();
-                if(err){
+                if (err){
                     console.error(err);
                     response.send("Error "+ err);
                 }else{
@@ -87,10 +85,10 @@ if(DEVELOPMENT){
                                 )`, 
                 (err, result) => {
                 done();
-                if(err){
+                if (err) {
                     console.error(err);
                     response.send("Error "+ err);
-                }else{
+                } else {
                     response.send("OK");
                 }
             });

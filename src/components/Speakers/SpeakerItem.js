@@ -19,7 +19,7 @@ class SpeakerItem extends Component {
         this.postFeedback = this.postFeedback.bind(this);
     }
 
-    postFeedback(){
+    postFeedback() {
         this.setState({fetching: true});
         fetch('/feedback', {
             method: 'POST',

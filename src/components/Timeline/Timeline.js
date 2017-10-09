@@ -3,7 +3,7 @@ import SessionItem from './SessionItem.js';
 import { Spinner } from 'react-mdl';
 
 class Timeline extends Component {
-    constructor(props){
+    constructor (props) {
         super(props);
         this.state = {sessions: []}
         this.state = {loading: true}
