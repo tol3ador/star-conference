@@ -10,7 +10,7 @@ class SpeakerItem extends Component {
             readiness: '5',
             understandable: '5',
             method: '5',
-            feedback: null,
+            feedback: 'No additional feedback',
             fetching: false,
         };
 
