@@ -20,7 +20,7 @@ class App extends Component {
           <p className="subtitle">Conference</p>
         </div>
         <Tabs activeTab={this.state.activeTab} onChange={(tabId)=> this.setState({activeTab: tabId})} ripple>
-            <Tab>Timeline</Tab>
+            <Tab>Star Track</Tab>
             <Tab>Predavači</Tab>
           </Tabs>
         <div className="content">

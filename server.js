@@ -16,9 +16,7 @@ app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 
-
-
-if(DEVELOPMENT){
+if (DEVELOPMENT) {
     app.post('/rate', (request, response) => {
         response.send("Mock: Rating OK!");
     });
@@ -65,7 +63,7 @@ if(DEVELOPMENT){
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
             client.query(`UPDATE salesforce.Session__c SET stars__c = stars__c+1 WHERE id = ${request.body.id}`, (err, result) => {
                 done();
-                if(err){
+                if (err){
                     console.error(err);
                     response.send("Error "+ err);
                 }else{
@@ -76,21 +74,21 @@ if(DEVELOPMENT){
     });
     app.post('/feedback', (request, response) =>{
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query(`INSERT INTO salesforce.Session_Feedback__c
+            client.query(`INSERT INTO salesforce.Session_Feedback__c (Speaker__c, Expectations__c, Readiness__c, Understandable__c, Method__c, Additional_Feedback__c)
                           VALUES (
-                                  "Speaker__c": ${request.body.speaker},
-                                  "Ocekivanja__c": ${request.body.expectation},
-                                  "Pripremljenost__c": ${request.body.readiness},
-                                  "Razumljivost__c": ${request.body.understandable},
-                                  "Metod_predavanja__c": ${request.body.method},
-                                  "Additional_Feedback__c": ${request.body.feedback}
+                                    '${request.body.speaker}',
+                                    '${request.body.expectation}',
+                                    '${request.body.readiness}',
+                                    '${request.body.understandable}',
+                                    '${request.body.method}',
+                                    '${request.body.feedback}'
                                 )`, 
                 (err, result) => {
                 done();
-                if(err){
+                if (err) {
                     console.error(err);
                     response.send("Error "+ err);
-                }else{
+                } else {
                     response.send("OK");
                 }
             });
@@ -100,4 +98,3 @@ if(DEVELOPMENT){
 app.listen(app.get('port'), function() {
     console.log("Listening on " + app.get('port'));
 });
-

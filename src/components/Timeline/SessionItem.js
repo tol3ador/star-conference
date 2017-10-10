@@ -33,20 +33,32 @@ class SessionItem extends Component {
 
     render() {
         return (        
-            <ListItem twoLine className={`session-item-type`/* ${this.props.type*/}>
-                <ListItemContent avatar="stars" subtitle={this.props.time} >
+            <ListItem twoLine className={`session-item-type`}>
+                <ListItemContent avatar="stars" subtitle="Start time: TBA"/*{this.props.time}*/ >
                     {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
                     {
                         this.props.type === "Break" ? 
                         (
-                        <h4 className="margin-right-24">
+                        <h4 className="margin-right-24 blue">
                             {this.props.duration}
                         </h4> 
-                        ):
-                        (
-                        <Badge text={this.state.stars}>
+                        ):(
+                            this.props.type === "Party" ?
+                            (
+                                <Badge text={this.state.stars} >
+                                    <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
+                                        if(this.state.rated)
+                                            return;
+                                        this.setState({
+                                            rated: true,
+                                            stars: this.state.stars+1
+                                            });
+                                        postStars(this.props.id, this.props.name);
+                                    }} className={this.state.rated ? "orange" : "blue"}/>
+                                </Badge>
+                            ) : (
                                 <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
                                     if(this.state.rated)
                                         return;
@@ -55,8 +67,8 @@ class SessionItem extends Component {
                                         stars: this.state.stars+1
                                         });
                                     postStars(this.props.id, this.props.name);
-                                }}/>
-                        </Badge> 
+                                }} className={this.state.rated ? "margin-right-24 orange" : "margin-right-24 blue"}/>
+                            ) 
                         )
                     }
                 </ListItemAction>

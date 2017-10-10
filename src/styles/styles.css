@@ -35,6 +35,11 @@ body {
     top: 50%;
 }
 
+.material-icons.mdl-list__item-avatar{
+    color: #407492;
+    background-color: #FFFFFF;
+}
+
 .session-item-type {
     background-color: #FFFFFF;
 }
@@ -46,6 +51,19 @@ body {
 }
 .session-item-type.Party {
     background-color: #F15A2B;
+}
+
+.material-icons.mdl-badge[data-badge]::after,
+.material-label.mdl-badge[data-badge]::after{
+  background: #407492;
+}
+
+.orange {
+    color: #F15A2B;
+}
+
+.blue {
+    color: #407492;
 }
 
 .margin-right-24 {
@@ -71,4 +89,8 @@ body {
 
 .font-white {
     color: #FFFFFF;
+}
+
+.feedback-label{
+    font-size: 12px;
 }
