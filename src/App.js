@@ -1,34 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import style from 'styled-components';
-import Speakers from './Speakers.js';
-import Timeline from './Timeline.js';
+import logo from './resources/logo.svg';
+import Speakers from './components/Speakers/Speakers.js';
+import Timeline from './components/Timeline/Timeline.js';
 import { Tabs, Tab } from 'react-mdl';
-
-const Content = style.div`
-  margin-top: -20px;
-`;
-const Header = style.div`
-  text-align: center;
-  background-color: #31566D;
-  height: 130px;
-  padding: 20px;
-  color: white;  
-`;
-const Logo = style.img`
-  height: 90px;
-`;
-const Title = style.h1`
-  font-size: 1.5em;
-  text-transform: uppercase;
-  margin-bottom: 0px;
-  margin-top: 0px;
-`;
-const Subtitle = style.div`
-  font-size: 0.35em;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-`;
 
 class App extends Component {
 
@@ -38,32 +12,21 @@ class App extends Component {
   }
 
   render() {
-    const SpeakersWrapper = style.div`
-      display: ${this.state.activeTab !== 1 ? 'none' : 'initial'};
-    `;
-  
-    const TimelineWrapper = style.div`
-      display: ${this.state.activeTab !== 0 ? 'none' : 'initial'};
-    `;
     return (
       <div>
-        <Header>
-          <Logo src={logo} alt="logo"/>
-          <Title>Star</Title>
-          <Subtitle>Conference</Subtitle>
-        </Header>
+        <div className="header">
+          <img src={logo} alt="logo" className="logo"/>
+          <h1 className="title">Star</h1>
+          <p className="subtitle">Conference</p>
+        </div>
         <Tabs activeTab={this.state.activeTab} onChange={(tabId)=> this.setState({activeTab: tabId})} ripple>
             <Tab>Timeline</Tab>
-            <Tab>Speakers</Tab>
+            <Tab>Predavači</Tab>
           </Tabs>
-        <Content>
-          <TimelineWrapper>
-            <Timeline />
-          </TimelineWrapper>
-          <SpeakersWrapper>
-            <Speakers />
-          </SpeakersWrapper>
-        </Content>
+        <div className="content">
+          <Timeline hide={this.state.activeTab !== 0} />
+          <Speakers hide={this.state.activeTab !== 1} />
+        </div>
       </div>
     );
   }

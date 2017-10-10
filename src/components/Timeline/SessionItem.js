@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListItem, ListItemContent, ListItemAction, Icon, Badge } from 'react-mdl';
 
-const pushStars = function(value, name){
+const postStars = function(value, name){
     fetch('/rate', {
         method: 'POST',
         headers: {
@@ -24,7 +24,6 @@ class SessionItem extends Component {
             stars: 0
         }
     }
-
     componentDidMount(){
         this.setState({
            rated: (localStorage.getItem('ratings')||"").indexOf(this.props.name) !== -1, 
@@ -34,22 +33,32 @@ class SessionItem extends Component {
 
     render() {
         return (        
-            <ListItem twoLine>
+            <ListItem twoLine className={`session-item-type`/* ${this.props.type*/}>
                 <ListItemContent avatar="stars" subtitle={this.props.time} >
                     {this.props.title}
                 </ListItemContent>
                 <ListItemAction>
-                    <Badge text={this.state.stars}>
-                        <Icon name={this.state.rated ? "star" : "star_border"} onClick={() => {
-                            if(this.state.rated)
-                                return;
-                            this.setState({
-                                rated: true,
-                                stars: this.state.stars+1
-                                });
-                            pushStars(this.props.id, this.props.name);
-                        }}/>
-                    </Badge> 
+                    {
+                        this.props.type === "Break" ? 
+                        (
+                        <h4 className="margin-right-24">
+                            {this.props.duration}
+                        </h4> 
+                        ):
+                        (
+                        <Badge text={this.state.stars}>
+                                <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
+                                    if(this.state.rated)
+                                        return;
+                                    this.setState({
+                                        rated: true,
+                                        stars: this.state.stars+1
+                                        });
+                                    postStars(this.props.id, this.props.name);
+                                }}/>
+                        </Badge> 
+                        )
+                    }
                 </ListItemAction>
             </ListItem>
         );

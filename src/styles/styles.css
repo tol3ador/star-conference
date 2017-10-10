@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.header {
+    text-align: center;
+    background-color: #31566D;
+    height: 130px;
+    padding: 20px;
+    color: white;  
+}
+
+.logo {
+    height: 90px;
+}
+
+.title {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.subtitle{
+    font-size: 0.35em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.loader{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.session-item-type {
+    background-color: #FFFFFF;
+}
+.session-item-type.Talk {
+    background-color: #407492;
+}
+.session-item-type.Panel.Discussion {
+    background-color: #407492;
+}
+.session-item-type.Party {
+    background-color: #F15A2B;
+}
+
+.margin-right-24 {
+    margin-right: 24px;
+}
+
+.card.speaker{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
+
+.card-actions.speaker {
+    height: 40px;
+    padding: 5px; 
+    background: rgba(0,0,0,0.15);
+}
+
+.card-description.speaker{
+    font-size: 10px; 
+    font-weight: 500;
+}
+
+.font-white {
+    color: #FFFFFF;
+}
