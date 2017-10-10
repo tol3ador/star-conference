@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header {
@@ -17,16 +17,19 @@ body {
 }
 
 .title {
-    font-size: 1.5em;
+    font-size: 1.7em;
     text-transform: uppercase;
     margin-bottom: 0px;
     margin-top: 0px;
+    line-height: 1.8em;
 }
 
 .subtitle {
     font-size: 0.35em;
+    line-height: 0.35em;
     letter-spacing: 2px;
     text-transform: uppercase;
+    padding-left: 4px;
 }
 
 .loader {
@@ -86,12 +89,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .card-description.speaker {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
+    font-family: 'Roboto', sans-serif;
 }
 
 .font-white {
@@ -116,7 +121,17 @@ body {
     color: rgb(64, 116, 146);
 }
 
-.mdl-dialog__actionsn {
+.mdl-dialog__actions {
     padding: 0;
     justify-content: space-between;
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 21px;
+}
+
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
+    background: #F15A2B;
 }
