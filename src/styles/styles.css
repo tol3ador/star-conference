@@ -115,8 +115,6 @@ body {
     background-color: rgb(64, 116, 146);
 }
 
-.mdl-textfield--floating-label .mdl-textfield__label {}
-
 .mdl-textfield--floating-label.is-focused .mdl-textfield__label {
     color: rgb(64, 116, 146);
 }
@@ -134,4 +132,8 @@ h4 {
 
 .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
     background: #F15A2B;
+}
+
+.link{
+    cursor: pointer;
 }

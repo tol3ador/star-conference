@@ -37,9 +37,10 @@ class Timeline extends Component {
             return this.props.hide ? null : (
                 <div>
                 {
-                    this.state.sessions.map((session, i) => {
+                    this.state.sessions.map(session => {
                         return <SessionItem title={session.title__c} 
                                             time={session.time__c.substring(11, 16)}
+                                            speaker={session.speaker_name__c}
                                             stars={session.stars__c}
                                             name={session.name}
                                             type={session.type__c}

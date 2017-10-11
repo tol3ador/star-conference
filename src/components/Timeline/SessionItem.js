@@ -32,10 +32,11 @@ class SessionItem extends Component {
     }
 
     render() {
-        return (        
+        return (      
             <ListItem twoLine className={`session-item-type`}>
-                <ListItemContent avatar="stars" subtitle={this.props.time} >
+                <ListItemContent avatar="stars">
                     {this.props.title}
+                    <span className="mdl-list__item-sub-title">{this.props.time}{this.props.speaker !== null ? ` | ${this.props.speaker}` : ``}</span>
                 </ListItemContent>
                 <ListItemAction>
                     {
@@ -56,7 +57,7 @@ class SessionItem extends Component {
                                             stars: this.state.stars+1
                                             });
                                         postStars(this.props.id, this.props.name);
-                                    }} className={this.state.rated ? "orange" : "blue"}/>
+                                    }} className={this.state.rated ? "orange" : "link blue"}/>
                                 </Badge>
                             ) : (
                                 <Icon name={this.state.rated ? "favorite" : "favorite_border"} onClick={() => {
@@ -67,7 +68,7 @@ class SessionItem extends Component {
                                         stars: this.state.stars+1
                                         });
                                     postStars(this.props.id, this.props.name);
-                                }} className={this.state.rated ? "margin-right-24 orange" : "margin-right-24 blue"}/>
+                                }} className={this.state.rated ? "margin-right-24 orange" : "margin-right-24 blue link"}/>
                             ) 
                         )
                     }
