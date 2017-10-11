@@ -11,7 +11,6 @@ class SpeakerItem extends Component {
             understandable: 1,
             method: 1,
             feedback: 'No additional feedback',
-            fetching: false,
         };
 
         this.handleOpenDialog = this.handleOpenDialog.bind(this);
@@ -20,7 +19,6 @@ class SpeakerItem extends Component {
     }
 
     postFeedback() {
-        this.setState({fetching: true});
         fetch('/feedback', {
             method: 'POST',
             headers: {
@@ -36,7 +34,6 @@ class SpeakerItem extends Component {
                 feedback: this.state.feedback,
             })
           }).then(()=>{
-                this.setState({fetching: false})
                 this.handleCloseDialog();
           })
     }
@@ -81,7 +78,7 @@ class SpeakerItem extends Component {
                 </CardActions>
                 <Dialog open={this.state.openDialog}>
                     <DialogTitle>{this.props.name}</DialogTitle>
-                    <DialogContent disabled={this.state.fetching}>
+                    <DialogContent>
                         <label className="feedback-label">Ispunjena očekivanja: </label>
                         <ReactStars size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
                             value={this.state.expectation}
