@@ -176,3 +176,9 @@ h4 {
     display: table-cell;
     margin: 0 auto;
 }
+
+.no-decoration{
+    color: inherit;
+    text-decoration: none;
+    cursor: inherit;
+}

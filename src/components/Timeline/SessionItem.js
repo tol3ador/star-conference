@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListItem, ListItemContent, ListItemAction, Icon, Badge } from 'react-mdl';
+import { Link } from 'react-router-dom';
 
 const postStars = function(value, name){
     fetch('/rate', {
@@ -23,7 +24,15 @@ class SessionItem extends Component {
             rated: false,
             stars: 0
         }
+        this.handleClick = this.handleClick.bind(this);
     }
+
+    handleClick(e){
+        if(e.shiftKey){
+
+        }else return null;
+    }
+
     componentDidMount(){
         this.setState({
            rated: (localStorage.getItem('ratings')||"").indexOf(this.props.name) !== -1, 
@@ -36,7 +45,12 @@ class SessionItem extends Component {
             <ListItem twoLine className={`session-item-type`}>
                 <ListItemContent avatar="stars">
                     {this.props.title}
-                    <span className="mdl-list__item-sub-title">{this.props.time}{this.props.speaker !== null ? ` | ${this.props.speaker}` : ``}</span>
+                    <span className="mdl-list__item-sub-title">
+                        <Link className="no-decoration" to={`timer/${this.props.duration}`}>
+                            {this.props.time}
+                        </Link>
+                        {this.props.speaker !== null ? ` | ${this.props.speaker}` : ``}
+                    </span>
                 </ListItemContent>
                 <ListItemAction>
                     {
