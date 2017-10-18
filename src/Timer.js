@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-const MtoMS = (value) => {
-    return value*60000;
-}
-
 const Interval = 100;
 const ReminderMinutes = 5;
 
@@ -12,8 +8,7 @@ class Timer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            totalTime: MtoMS(this.props.match.params.duration),
-            timeLeft: MtoMS(this.props.match.params.duration),
+            timeLeft: this.props.match.params.duration*60000,
             running: false,
         }
 
