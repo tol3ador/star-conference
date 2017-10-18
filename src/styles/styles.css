@@ -60,12 +60,41 @@ body {
     color: #F15A2B;
 }
 
+.orange-background-transition {
+    background-color:  #F15A2B;
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
 .blue {
     color: #407492;
 }
 
+.blue-background-transition {
+    background-color:  #407492;
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+.uppercase { 
+    text-transform: uppercase;
+}
+
 .white {
     color: #FFFFFF;
+}
+
+.white-background {
+    background-color: #FFFFFF;
+}
+
+.white-transition{
+    color: #FFFFFF;
+    -webkit-transition: color 1000ms linear;
+    -ms-transition: color 1000ms linear;
+    transition: color 1000ms linear;
 }
 
 .margin-right-24 {
