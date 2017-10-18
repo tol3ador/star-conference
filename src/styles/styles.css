@@ -135,7 +135,15 @@ h4 {
 }
 
 .fullscreen{
+    display: table;
     position: absolute;
+    text-align: center;
     width: 100%;
     height: 100%;
+}
+
+.timer{
+    vertical-align: middle;
+    display: table-cell;
+    margin: 0 auto;
 }

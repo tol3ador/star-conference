@@ -41,10 +41,10 @@ class Timer extends Component {
 
         return (
             <div className="fullscreen" onClick={this.startCountdown} style={{backgroundColor: color}}>
-                <center>
-                    <h2 className={alpha === 1 ? 'blue' : 'orange'}>{Math.floor(this.state.timeLeft/1000)}</h2>
-                    <h3 className='white' style={{display: `${alpha === 1 ? 'block' : 'none'}`}}>Maja Nedučić te ljutito gleda!</h3>
-                </center>
+                <div className="timer">
+                <h2 className={alpha > 0.50 ? 'white' : 'orange'} >{Math.floor(this.state.timeLeft/1000)}</h2>
+                <h3 className='white' style={{display: `${alpha === 1 ? 'block' : 'none'}`}}>Maja Nedučić te ljutito gleda!</h3>
+                </div>
             </div>
         );
       }
