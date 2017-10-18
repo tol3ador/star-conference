@@ -43,15 +43,16 @@ class Timer extends Component {
 
         const backgroundColor = overtime ? 'orange-background-transition ' : reminder ? 'blue-background-transition' : 'white-background';
         const textColor = reminder ? 'white-transition' : 'orange';
+        const overtimeText = minutes >= ReminderMinutes ? `Naredno predavanje počinje za: ${15-minutes} minuta` : 'Predviđeno vreme za pitanja: 5 minuta'; 
 
         return (
             <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.startCountdown}>
                 <div className="timer">
-                    <h3 className={textColor}>{overtime ? 'Prekoračeno vreme:' : 'Preostalo vreme:'}</h3>
+                    <h3 className={textColor}>{overtime ? minutes >= 10 ? 'Maja Nedučić te ljutito gleda!' : 'Prekoračeno vreme:' : 'Preostalo vreme:'}</h3>
                     <h1 className={textColor}>
                         {`${minutes} : ${seconds}`}
                     </h1>
-                    <h3 className='white-transition' style={{display: `${overtime ? 'block' : 'none'}`}}>Maja Nedučić te ljutito gleda!</h3>
+                    <h5 className='white-transition' style={{display: `${overtime ? 'block' : 'none'}`}}>{overtimeText}</h5>
                 </div>
             </div>
         );
