@@ -205,14 +205,17 @@ h4 {
 }
 
 .timer-main-text {
+    font-family: 'Titillium Web', sans-serif;
     font-size: 60px;
 }
 
 .timer-additional-text {
+    font-family: 'Titillium Web', sans-serif;
     font-size: 35px;
 }
 
 .timer-numbers {
+    font-family: 'Titillium Web', sans-serif;
     font-size: 200px;
 }
 
