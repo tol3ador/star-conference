@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Sound from 'react-sound';
+var effect = require('./resources/tick-tock.mp3')
 
 const Interval = 100;
 
@@ -72,6 +74,8 @@ class Timer extends Component {
         const mainText = overtime ? 'Maja Nedučić te ljutito gleda!' : 'Preostalo vreme';
         const additionalText = overtime ? 'Vreme je za pitanja' : 'Polako privodite Vaše predavanje kraju';
 
+        const soundPlaying = !overtime && seconds < 10;
+
         if (overtime){
             if(seconds%2 < 1)
                 backgroundColor = 'blue-background-transition';
@@ -91,6 +95,7 @@ class Timer extends Component {
                     </h1>
                     <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                 </div>
+                <Sound url={effect} playStatus={soundPlaying && !this.state.paused ? Sound.status.PLAYING : Sound.status.STOPPED}/> 
             </div>
         );
       }
