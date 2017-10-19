@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sound from 'react-sound';
-var effect = require('./resources/tick-tock.mp3')
+var soundEffect = require('./resources/tick-tock.mp3')
 
 const Interval = 100;
 
@@ -95,7 +95,7 @@ class Timer extends Component {
                     </h1>
                     <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                 </div>
-                <Sound url={effect} playStatus={soundPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}/> 
+                <Sound url={soundEffect} playStatus={soundPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}/> 
             </div>
         );
       }
