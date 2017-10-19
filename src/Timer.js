@@ -11,22 +11,43 @@ class Timer extends Component {
             paused: true,
         }
 
+        this.timeout = null;
+
         this.tick = this.tick.bind(this);
         this.startCountdown = this.startCountdown.bind(this);
+        this.toggleCounter = this.toggleCounter.bind(this);
+    }
+
+    toggleCounter(){
+        if (this.state.paused){
+            this.startCountdown();
+        } else {
+            this.pauseCountdown();
+        }
     }
 
     startCountdown(){
         this.tick();
         this.setState({
             paused: false,
-        })
+        });
+    }
+
+    pauseCountdown(){
+        if (this.timeout){
+            clearTimeout(this.timeout)
+            this.timeout = null;
+        }
+        this.setState({
+            paused: true,
+        });
     }
 
     tick(){
         this.setState({
             timeLeft: this.state.timeLeft - Interval,
         })
-        setTimeout(this.tick, Interval);
+        this.timeout = setTimeout(this.tick, Interval)
     }
 
 
@@ -51,7 +72,7 @@ class Timer extends Component {
         const mainText = overtime ? 'Maja Nedučić te ljutito gleda!' : 'Preostalo vreme';
         const additionalText = overtime ? 'Vreme je za pitanja' : 'Polako privodite Vaše predavanje kraju';
 
-        if(overtime){
+        if (overtime){
             if(seconds%2 < 1)
                 backgroundColor = 'blue-background-transition';
             else
@@ -59,8 +80,11 @@ class Timer extends Component {
         }
 
         return (
-            <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.startCountdown}>
+            <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter}>
                 <div className="timer">
+                    <div className="top-right timer-additional-text white">
+                        {this.state.paused ? `▶` : `❚❚`}
+                    </div>
                     <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
                     <h1 className={`${mainTextColor} timer-numbers`}>
                         {`${minutes} : ${seconds}`}

@@ -205,16 +205,20 @@ h4 {
 }
 
 .timer-main-text {
-    font-family: 'Roboto', sans-serif;
     font-size: 110px;
 }
 
 .timer-additional-text {
-    font-family: 'Roboto', sans-serif;
     font-size: 65px;
 }
 
 .timer-numbers {
-    font-family: 'Roboto', sans-serif;
     font-size: 280px;
+}
+
+.top-right{
+    position: absolute;
+    margin: 40px;
+    top: 0;
+    right: 0;
 }
