@@ -74,7 +74,7 @@ class Timer extends Component {
         const mainText = overtime ? 'Maja Nedučić te ljutito gleda!' : 'Preostalo vreme';
         const additionalText = overtime ? 'Vreme je za pitanja' : 'Polako privodite Vaše predavanje kraju';
 
-        const soundPlaying = !overtime && seconds < 10;
+        const soundPlaying = !this.state.paused && !overtime && seconds < 10 && minutes < 1;
 
         if (overtime){
             if(seconds%2 < 1)
@@ -95,7 +95,7 @@ class Timer extends Component {
                     </h1>
                     <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                 </div>
-                <Sound url={effect} playStatus={soundPlaying && !this.state.paused ? Sound.status.PLAYING : Sound.status.STOPPED}/> 
+                <Sound url={effect} playStatus={soundPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}/> 
             </div>
         );
       }
