@@ -8,7 +8,7 @@ class Timer extends Component {
         super(props);
         this.state = {
             timeLeft: this.props.match.params.duration*60000,
-            running: false,
+            paused: true,
         }
 
         this.tick = this.tick.bind(this);
@@ -18,7 +18,7 @@ class Timer extends Component {
     startCountdown(){
         this.tick();
         this.setState({
-            running: true,
+            paused: false,
         })
     }
 

@@ -189,6 +189,13 @@ h4 {
     vertical-align: middle;
     display: table-cell;
     margin: 0 auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
 }
 
 .no-decoration {
@@ -199,15 +206,15 @@ h4 {
 
 .timer-main-text {
     font-family: 'Roboto', sans-serif;
-    font-size: 65px;
+    font-size: 110px;
 }
 
 .timer-additional-text {
     font-family: 'Roboto', sans-serif;
-    font-size: 40px;
+    font-size: 65px;
 }
 
 .timer-numbers {
     font-family: 'Roboto', sans-serif;
-    font-size: 160px;
+    font-size: 280px;
 }
