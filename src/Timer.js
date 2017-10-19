@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 const Interval = 100;
-const ReminderMinutes = 5;
 
 class Timer extends Component {
     
@@ -32,6 +31,9 @@ class Timer extends Component {
 
 
     render() {
+        const firstReminderMinutes = 5;
+        const secondReminderMinutes = 2;
+
         let minutes = Math.abs(this.state.timeLeft < 0 ? Math.ceil(this.state.timeLeft/60000) : Math.floor(this.state.timeLeft/60000));
         minutes = minutes < 10 ? '0'+minutes : minutes;
 
@@ -39,20 +41,31 @@ class Timer extends Component {
         seconds = seconds < 10 ? '0'+seconds : seconds;
 
         const overtime = this.state.timeLeft < 0;
-        const reminder = overtime || minutes < ReminderMinutes;
+        const firstReminder = overtime || minutes < firstReminderMinutes;
+        const secondReminder = overtime || minutes < secondReminderMinutes;
 
-        const backgroundColor = overtime ? 'orange-background-transition ' : reminder ? 'blue-background-transition' : 'white-background';
-        const textColor = reminder ? 'white-transition' : 'orange';
-        const overtimeText = minutes >= ReminderMinutes ? `Naredno predavanje počinje za: ${15-minutes} minuta` : 'Predviđeno vreme za pitanja: 5 minuta'; 
+        let backgroundColor = secondReminder ? 'orange-background-transition ' : firstReminder ? 'blue-background-transition' : 'white-background';
+        const mainTextColor = firstReminder ? 'white-transition' : 'orange';
+        const additionalTextColor = firstReminder ? secondReminder ? 'white-transition' : 'blue-transition' : 'white';
+        
+        const mainText = overtime ? 'Maja Nedučić te ljutito gleda!' : 'Preostalo vreme';
+        const additionalText = overtime ? 'Vreme je za pitanja' : 'Polako privodite Vaše predavanje kraju';
+
+        if(overtime){
+            if(seconds%2 < 1)
+                backgroundColor = 'blue-background-transition';
+            else
+                backgroundColor = 'orange-background-transition';
+        }
 
         return (
             <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.startCountdown}>
                 <div className="timer">
-                    <h3 className={textColor}>{overtime ? minutes >= 10 ? 'Maja Nedučić te ljutito gleda!' : 'Prekoračeno vreme:' : 'Preostalo vreme:'}</h3>
-                    <h1 className={textColor}>
+                    <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
+                    <h1 className={`${mainTextColor} timer-numbers`}>
                         {`${minutes} : ${seconds}`}
                     </h1>
-                    <h5 className='white-transition' style={{display: `${overtime ? 'block' : 'none'}`}}>{overtimeText}</h5>
+                    <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                 </div>
             </div>
         );

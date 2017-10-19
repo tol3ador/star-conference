@@ -62,9 +62,9 @@ body {
 
 .orange-background-transition {
     background-color:  #F15A2B;
-    -webkit-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
+    -webkit-transition: background-color 750ms linear;
+    -ms-transition: background-color 750ms linear;
+    transition: background-color 750ms linear;
 }
 
 .blue {
@@ -73,9 +73,9 @@ body {
 
 .blue-background-transition {
     background-color:  #407492;
-    -webkit-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
+    -webkit-transition: background-color 750ms linear;
+    -ms-transition: background-color 750ms linear;
+    transition: background-color 750ms linear;
 }
 
 .uppercase { 
@@ -90,11 +90,25 @@ body {
     background-color: #FFFFFF;
 }
 
-.white-transition{
+.white-transition {
     color: #FFFFFF;
-    -webkit-transition: color 1000ms linear;
-    -ms-transition: color 1000ms linear;
-    transition: color 1000ms linear;
+    -webkit-transition: color 750ms linear;
+    -ms-transition: color 750ms linear;
+    transition: color 750ms linear;
+}
+
+.orange-transition {
+    color: #F15A2B;
+    -webkit-transition: color 750ms linear;
+    -ms-transition: color 750ms linear;
+    transition: color 750ms linear;
+}
+
+.blue-transition {
+    color: #407492;
+    -webkit-transition: color 750ms linear;
+    -ms-transition: color 750ms linear;
+    transition: color 750ms linear;
 }
 
 .margin-right-24 {
@@ -159,11 +173,11 @@ h4 {
     background: #F15A2B;
 }
 
-.link{
+.link {
     cursor: pointer;
 }
 
-.fullscreen{
+.fullscreen {
     display: table;
     position: absolute;
     text-align: center;
@@ -171,14 +185,29 @@ h4 {
     height: 100%;
 }
 
-.timer{
+.timer {
     vertical-align: middle;
     display: table-cell;
     margin: 0 auto;
 }
 
-.no-decoration{
+.no-decoration {
     color: inherit;
     text-decoration: none;
     cursor: inherit;
+}
+
+.timer-main-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 65px;
+}
+
+.timer-additional-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+}
+
+.timer-numbers {
+    font-family: 'Roboto', sans-serif;
+    font-size: 160px;
 }
