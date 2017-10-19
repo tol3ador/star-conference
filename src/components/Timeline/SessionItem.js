@@ -46,7 +46,7 @@ class SessionItem extends Component {
                 <ListItemContent avatar="stars">
                     {this.props.title}
                     <span className="mdl-list__item-sub-title">
-                        <Link className="no-decoration" to={`timer/${this.props.duration}`}>
+                        <Link /*className="no-decoration"*/ to={`/timer/${this.props.duration}`}>
                             {this.props.time}
                         </Link>
                         {this.props.speaker !== null ? ` | ${this.props.speaker}` : ``}
