@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var soundEffect = require('./resources/tick-tock.mp3')
+//var soundEffect = require('./resources/tick-tock.mp3')
 
 const Interval = 100;
 
@@ -73,7 +73,7 @@ class Timer extends Component {
         const mainText = overtime ? 'Maja Nedučić te ljutito gleda!' : 'Preostalo vreme';
         const additionalText = overtime ? 'Vreme je za pitanja' : 'Polako privedite Vaše predavanje kraju';
 
-        const soundPlaying = !this.state.paused && !overtime && seconds < 10 && minutes < 1;
+//        const soundPlaying = !this.state.paused && !overtime && seconds < 10 && minutes < 1;
 
         if (overtime){
             if(seconds%2 < 1)
@@ -86,7 +86,7 @@ class Timer extends Component {
             <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter}>
                 <div className="timer">
                     <div className={`${mainTextColor} bottom-right timer-additional-text`}>
-                        {this.state.paused ? `▶` : `❚❚`}
+                        {this.state.paused ? `▶` : <i class="material-icons">pause</i>}
                     </div>
                     <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
                     <h1 className={`${mainTextColor} timer-numbers`}>
