@@ -15,6 +15,7 @@ class Root extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path={'/'} component={App} />
+                    <Route exact path={'/timer'} component={App} />
                     <Route path={'/timer/:duration'} component={Timer} />
                 </Switch>
             </BrowserRouter>
