@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sound from 'react-sound';
 var soundEffect = require('./resources/tick-tock.mp3')
 
 const Interval = 100;
@@ -87,7 +86,7 @@ class Timer extends Component {
             <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter}>
                 <div className="timer">
                     <div className={`${mainTextColor} bottom-right timer-additional-text`}>
-                        {this.state.paused ? `▶` : `❚❚`}
+                        {this.state.paused ? <i class="material-icons">play_arrow</i> : <i class="material-icons">pause</i>}
                     </div>
                     <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
                     <h1 className={`${mainTextColor} timer-numbers`}>
@@ -95,7 +94,7 @@ class Timer extends Component {
                     </h1>
                     <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                 </div>
-                <Sound url={soundEffect} playStatus={soundPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}/> 
+                {soundPlaying ? <audio src={soundEffect} type="audio/mp3" autoPlay /> : null }
             </div>
         );
       }
