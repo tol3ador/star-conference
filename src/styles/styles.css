@@ -205,20 +205,20 @@ h4 {
 }
 
 .timer-main-text {
-    font-size: 110px;
+    font-size: 60px;
 }
 
 .timer-additional-text {
-    font-size: 65px;
+    font-size: 35px;
 }
 
 .timer-numbers {
-    font-size: 280px;
+    font-size: 200px;
 }
 
-.top-right{
+.bottom-right{
     position: absolute;
-    margin: 40px;
-    top: 0;
+    margin: 25px;
+    bottom: 0;
     right: 0;
 }
