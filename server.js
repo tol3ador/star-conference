@@ -32,7 +32,7 @@ if (DEVELOPMENT) {
 } else {
     app.get('/speakers', (request, response) => {
         pg.connect(process.env.DATABASE_URL, (err, client, done) => {
-            client.query('SELECT sfid, name, name__c, image__c, session_title__c FROM salesforce.Speaker__c ORDER BY name__c ASC', (err, result) => {
+            client.query('SELECT sfid, name, name__c, image__c, session_title__c, order__c FROM salesforce.Speaker__c ORDER BY order__c ASC', (err, result) => {
                 done();
                 if (err) {
                     console.error(err);
