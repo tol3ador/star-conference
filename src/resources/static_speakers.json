@@ -63,24 +63,10 @@
       "session_title__c": "Umbraco - Tip & Tricks"
     },
     {
-      "sfid": "a000Y00000IoPjyQAF",
-      "name": "SP-023",
-      "name__c": "Nikola Živković",
-      "image__c": "https://star-conference-dev-ed--c.eu11.content.force.com/sfc/dist/version/download/?oid=00D0Y0000035OaM&ids=0680Y000001lzoT&d=/a/0Y000000CjFM/3GwxTTSxSgE6Z.vdxiHvqxh9IocDVRqRiOnX0ooIJuw&operationContext=DELIVERY&dpt=null",
-      "session_title__c": "Developers’ Talk"
-    },
-    {
       "sfid": "a000Y00000InD9JQAV",
       "name": "SP-019",
       "name__c": "Ognjen Stanić",
       "image__c": "https://star-conference-dev-ed--c.eu11.content.force.com/sfc/dist/version/download/?oid=00D0Y0000035OaM&ids=0680Y000001lzdp&d=/a/0Y000000CjE9/6SQ0QmAeLhuIuhDAAvFdpHrYF1HaDHQd7E_V2kLNErQ&operationContext=DELIVERY&dpt=null",
       "session_title__c": "BDD & TDD kroz primere u C#"
-    },
-    {
-      "sfid": "a000Y00000IoPj0QAF",
-      "name": "SP-022",
-      "name__c": "Saša Novaković",
-      "image__c": "https://star-conference-dev-ed--c.eu11.content.force.com/sfc/dist/version/download/?oid=00D0Y0000035OaM&ids=0680Y000001lzoE&d=/a/0Y000000CjFH/L0rqv7Rb.lkADWmURTXnT.6RejYaowOGYzwE4iM.mY8&operationContext=DELIVERY&dpt=null",
-      "session_title__c": "Developers’ Talk"
     }
   ]
