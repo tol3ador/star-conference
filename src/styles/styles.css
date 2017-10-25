@@ -125,11 +125,6 @@ body {
     color: #FFFFFF;
 }
 
-.mdl-dialog__actions {
-    padding: 0;
-    justify-content: space-between;
-}
-
 .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
     background: #F15A2B;
 }
@@ -273,6 +268,6 @@ body {
     color: rgb(64, 116, 146);
 }
 
-.mdl-textfield:not(:empty) .mdl-textfield__label {
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
     color: rgb(64, 116, 146);
 }
