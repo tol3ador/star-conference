@@ -22,7 +22,6 @@ class Timer extends Component {
     }
 
     toggleText(event){
-        event.preventDefault();
         if (this.state.showText) {
             this.setState({
                 showText: false,
@@ -102,7 +101,7 @@ class Timer extends Component {
         }
 
         return (
-            <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter} onContextMenu={this.toggleText} >
+            <div className={`fullscreen ${backgroundColor} uppercase`}  onClick={this.toggleCounter} >
                 <div className="timer">
                     <div className={`${controlsColor} bottom-right timer-additional-text`}>
                         {this.state.paused ? `▶` : <i class="material-icons">pause</i>}
@@ -111,7 +110,7 @@ class Timer extends Component {
                         <i class="material-icons">remove_red_eye</i>
                     </div>
                     <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
-                    <h1 className={`${mainTextColor} timer-numbers`}>
+                    <h1 className={`${mainTextColor} timer-numbers`} onMouseOver={this.toggleText}>
                         {`${minutes} : ${seconds}`}
                     </h1>
                     <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
