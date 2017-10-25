@@ -103,14 +103,14 @@ class Timer extends Component {
         return (
             <div className={`fullscreen ${backgroundColor} uppercase`}  onClick={this.toggleCounter} >
                 <div className="timer">
-                    <div className={`${controlsColor} bottom-right timer-additional-text`}>
-                        {this.state.paused ? `▶` : <i class="material-icons">pause</i>}
+                    <div className={`${controlsColor} bottom-right timer-additional-text`}  onMouseEnter={this.toggleText} onMouseLeave={this.toggleText}>
+                        {this.state.paused ? <i class="material-icons">&#xE037;</i> : <i class="material-icons">&#xE034;</i>}
                     </div>
-                    <div className={`${controlsColor} ${this.state.showText ? null : !firstReminder ? 'show' : null} top-right timer-additional-text`}>
-                        <i class="material-icons">remove_red_eye</i>
+                    <div className={`${controlsColor} top-right timer-additional-text`}  onMouseEnter={this.toggleText} onMouseLeave={this.toggleText}>
+                        {this.state.showText || firstReminder ? <i class="material-icons">&#xE8F4;</i> : <i class="material-icons">&#xE8F5;</i>}
                     </div>
                     <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
-                    <h1 className={`${mainTextColor} timer-numbers`} onMouseOver={this.toggleText}>
+                    <h1 className={`${mainTextColor} timer-numbers`}>
                         {`${minutes} : ${seconds}`}
                     </h1>
                     <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>

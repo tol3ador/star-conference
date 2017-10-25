@@ -211,12 +211,7 @@ h4 {
 
 .top-right {
     position: absolute;
-    visibility: hidden;
     margin: 25px;
     top: 0;
     right: 0;
-}
-
-.top-right.show {
-    visibility: visible;
 }
