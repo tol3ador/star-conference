@@ -40,7 +40,7 @@ class Speakers extends Component {
                     this.state.speakers.map(speaker => {
                         return (
                             <Cell col = {speaker.session_title__c === "Developers’ Talk" || speaker.session_title__c === "Mystery Talk" ? 4 : 2} >
-                                <SpeakerItem name={speaker.name__c} image={speaker.image__c} speakerId={speaker.sfid} />
+                                <SpeakerItem name={speaker.name__c} image={speaker.image__c} speakerId={speaker.sfid} openDialog={this.props.openDialog}/>
                             </Cell>
                         );
                     })
