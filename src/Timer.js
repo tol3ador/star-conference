@@ -10,13 +10,28 @@ class Timer extends Component {
         this.state = {
             timeLeft: this.props.match.params.duration*60000,
             paused: true,
+            showText: true,
         }
 
         this.timeout = null;
 
         this.tick = this.tick.bind(this);
         this.startCountdown = this.startCountdown.bind(this);
+        this.toggleText = this.toggleText.bind(this);
         this.toggleCounter = this.toggleCounter.bind(this);
+    }
+
+    toggleText(event){
+        event.preventDefault();
+        if (this.state.showText) {
+            this.setState({
+                showText: false,
+            })
+        } else {
+            this.setState({
+                showText: true,
+            })
+        }
     }
 
     toggleCounter(){
@@ -67,13 +82,12 @@ class Timer extends Component {
         const secondReminder = overtime || minutes < secondReminderMinutes;
 
         let backgroundColor = secondReminder ? 'orange-background-transition ' : firstReminder ? 'blue-background-transition' : 'white-background';
-        const mainTextColor = firstReminder ? 'white-transition' : 'orange';
+        let mainTextColor = firstReminder ? 'white-transition' : 'orange-transition';
+        const controlsColor = mainTextColor;
         const additionalTextColor = firstReminder ? secondReminder ? 'white-transition' : 'blue-transition' : 'white';
         
         const mainText = overtime ? 'Maja Nedučić te ljutito gleda!' : 'Preostalo vreme';
         const additionalText = overtime ? 'Vreme je za pitanja' : 'Polako privedite Vaše predavanje kraju';
-
-//        const soundPlaying = !this.state.paused && !overtime && seconds < 10 && minutes < 1;
 
         if (overtime){
             if(seconds%2 < 1)
@@ -82,11 +96,16 @@ class Timer extends Component {
                 backgroundColor = 'orange-background-transition';
         }
 
+        if (!this.state.showText) {
+            mainTextColor = 'white-transition';
+        }
+
         return (
-            <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter}>
+            <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter} onContextMenu={this.toggleText}>
                 <div className="timer">
-                    <div className={`${mainTextColor} bottom-right timer-additional-text`}>
-                        {this.state.paused ? `▶` : <i class="material-icons">pause</i>}
+                    <div className={`${controlsColor} bottom-right timer-additional-text`}>
+                        {this.state.showText ? null : !firstReminder ? <i class="material-icons">remove_red_eye</i> : null}
+                        {this.state.paused ? <i class="material-icons">play_arrow</i> : <i class="material-icons">pause</i>}
                     </div>
                     <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
                     <h1 className={`${mainTextColor} timer-numbers`}>
@@ -94,7 +113,6 @@ class Timer extends Component {
                     </h1>
                     <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                 </div>
-                {/* {soundPlaying ? <audio src={soundEffect} type="audio/mp3" autoPlay /> : null } */}
             </div>
         );
       }

@@ -202,9 +202,16 @@ h4 {
     font-size: 200px;
 }
 
-.bottom-right{
+.bottom-right {
     position: absolute;
+    font-size: 24px;
+    background: orange;
     margin: 25px;
     bottom: 0;
     right: 0;
+}
+
+.bottom-right > i {
+    font-size: 24px;
+    background: gray;
 }
