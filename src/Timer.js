@@ -98,14 +98,17 @@ class Timer extends Component {
 
         if (!this.state.showText) {
             mainTextColor = 'white-transition';
+            
         }
 
         return (
-            <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter} >
+            <div className={`fullscreen ${backgroundColor} uppercase`} onClick={this.toggleCounter} onContextMenu={this.toggleText} >
                 <div className="timer">
                     <div className={`${controlsColor} bottom-right timer-additional-text`}>
-                        {this.state.showText ? null : !firstReminder ? <i class="material-icons">remove_red_eye</i> : null}
-                        {this.state.paused ? <i class="material-icons">play_circle_outline</i> : <i class="material-icons">pause</i>}
+                        {this.state.paused ? `▶` : <i class="material-icons">pause</i>}
+                    </div>
+                    <div className={`${controlsColor} ${this.state.showText ? null : !firstReminder ? 'show' : null} top-right timer-additional-text`}>
+                        <i class="material-icons">remove_red_eye</i>
                     </div>
                     <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
                     <h1 className={`${mainTextColor} timer-numbers`}>
