@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       activeTab: 0,
-      openDialog: false,
+      openDialog: true,
     };
 
     this.handleOpenDialog = this.handleOpenDialog.bind(this);

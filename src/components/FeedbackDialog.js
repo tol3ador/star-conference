@@ -71,12 +71,12 @@ class FeedbackDialog extends Component {
 
     render() {
         const show = this.props.show || false;
-        const dialogTitle = this.props.title || 'Title';
+        const dialogTitle = this.props.title || 'Osamnaestkaraktera';
 
         return  <div onClick={this.props.close} className={`dialog ${show ? 'show' : ''}`}>
                     <div className='dialog-content' onClick={this.preventClick}>
                         <div className='dialog-header'>
-                            <span> {dialogTitle} </span>
+                            <span>{dialogTitle}</span>
                         </div>
                         <div className='dialog-body'>
                             <label className="feedback-label">Ispunjena očekivanja: </label>
@@ -99,9 +99,7 @@ class FeedbackDialog extends Component {
                                 value={this.state.method}
                                 onChange={this.methodChanged.bind(this)}
                             />
-                            <div className='additional-feedback'>
-                                <Textfield floatingLabel={true} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" rows={3} />
-                            </div>
+                            <Textfield floatingLabel={true} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" />
                             <div className='dialog-actions'>
                                 <Button type='button' onClick={this.postFeedback}>Submit</Button>
                                 <Button type='button' onClick={this.props.close}>Close</Button>

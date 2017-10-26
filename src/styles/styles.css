@@ -254,7 +254,6 @@ body {
 .dialog-content {
     position: relative;
     width: 300px;
-    height: 400px;
     background: white;
     top: 50%;
     left: 50%;
@@ -264,19 +263,19 @@ body {
 }
 
 .dialog-header {
-    display: flex;
-    align-items: center;
+    position: relative;
+    padding-top: 20px;
+    text-align: center;
     color: #407492;
     font-size: 32px;
     height: 40px;
-    padding: 10px;
 }
+
 
 .dialog-body {
     position: relative;
     margin: auto;
     width: 90%;
-    height: 250px;;
     text-align: center;
     color: #407492;
 }
