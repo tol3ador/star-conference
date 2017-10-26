@@ -244,6 +244,7 @@ body {
 .horizontal-center > span {
     margin: 0 2px 5px 2px;
     height: 25px;
+    font-size: 24px;
 }
 
 .dialog-actions {
