@@ -10,22 +10,13 @@ class FeedbackDialog extends Component {
             readiness: 1,
             understandable: 1,
             method: 1,
-            feedback: 'No additional feedback',
+            feedback: '',
         }
 
         this.postFeedback = this.postFeedback.bind(this);
-        this.clearInputs = this.clearInputs.bind(this);
         this.preventClick = this.preventClick.bind(this);
-    }
-
-    clearInputs(){
-        this.setState({
-            expectation: 1,
-            readiness: 1,
-            understandable: 1,
-            method: 1,
-            feedback: 'No additional feedback',
-        });
+        this.setInitialState = this.setInitialState.bind(this);
+        this.clearAndClose = this.clearAndClose.bind(this);
     }
 
     postFeedback() {
@@ -44,9 +35,23 @@ class FeedbackDialog extends Component {
                 feedback: this.state.feedback,
             })
           }).then(()=>{
-                this.clearInputs();
-                this.props.close();
+                this.clearAndClose();
           })
+    }
+
+    clearAndClose() {
+        this.setInitialState();
+        this.props.close();
+    }
+
+    setInitialState() {
+        this.setState({
+            expectation: 1,
+            readiness: 1,
+            understandable: 1,
+            method: 1,
+            feedback: '',
+        })
     }
 
     preventClick(e){
@@ -78,33 +83,36 @@ class FeedbackDialog extends Component {
                         <div className='dialog-header'>
                             <span>{dialogTitle}</span>
                         </div>
-                        <div className='dialog-body'>
-                            <label className="feedback-label">Ispunjena očekivanja: </label>
-                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
-                                value={this.state.expectation}
-                                onChange={this.expectationChanged.bind(this)}
-                            />
-                            <label className="feedback-label">Pripremljenost predavača: </label>
-                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
-                                value={this.state.readiness}
-                                onChange={this.readinessChanged.bind(this)}
-                            />
-                            <label className="feedback-label">Metod predavanja: </label>
-                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
-                                value={this.state.understandable}
-                                onChange={this.understandableChanged.bind(this)}
-                            />
-                            <label className="feedback-label">Razumljivost predavanja: </label>
-                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
-                                value={this.state.method}
-                                onChange={this.methodChanged.bind(this)}
-                            />
-                            <Textfield floatingLabel={true} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" />
-                            <div className='dialog-actions'>
-                                <Button type='button' onClick={this.postFeedback}>Submit</Button>
-                                <Button type='button' onClick={this.props.close}>Close</Button>
+                        <form >
+                            <div className='dialog-body'>
+                                <label className="feedback-label">Ispunjena očekivanja: </label>
+                                <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
+                                    value={this.state.expectation}
+                                    onChange={this.expectationChanged.bind(this)}
+                                />
+                                <label className="feedback-label">Pripremljenost predavača: </label>
+                                <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
+                                    value={this.state.readiness}
+                                    onChange={this.readinessChanged.bind(this)}
+                                />
+                                <label className="feedback-label">Metod predavanja: </label>
+                                <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
+                                    value={this.state.understandable}
+                                    onChange={this.understandableChanged.bind(this)}
+                                />
+                                <label className="feedback-label">Razumljivost predavanja: </label>
+                                <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
+                                    value={this.state.method}
+                                    onChange={this.methodChanged.bind(this)}
+                                />
+                                <Textfield floatingLabel={true} value={this.state.feedback} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" />
+                            
+                                <div className='dialog-actions'>
+                                    <Button type='button' onClick={this.postFeedback}>Submit</Button>
+                                    <Button type='button' onClick={this.clearAndClose}>Close</Button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
     }
