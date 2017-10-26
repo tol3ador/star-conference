@@ -10,7 +10,7 @@ class FeedbackDialog extends Component {
             readiness: 1,
             understandable: 1,
             method: 1,
-            feedback: '',
+            feedback: null,
         }
 
         this.postFeedback = this.postFeedback.bind(this);
@@ -50,7 +50,7 @@ class FeedbackDialog extends Component {
             readiness: 1,
             understandable: 1,
             method: 1,
-            feedback: '',
+            feedback: null,
         })
     }
 
@@ -71,7 +71,8 @@ class FeedbackDialog extends Component {
         this.setState({method: newRating});
     }
     handleFeedbackText(e){
-        this.setState({feedback: e.target.value})
+        let value = e.target.value === '' ? null : e.target.value;
+        this.setState({feedback: value})
     }
 
     render() {
