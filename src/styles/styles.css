@@ -275,20 +275,25 @@ body {
 .dialog-body {
     position: relative;
     margin: auto;
-    width: 80%;
+    width: 90%;
     height: 250px;;
     text-align: center;
     color: #407492;
 }
 
+.mdl-textfield {
+    width: 85%;
+}
+
 .horizontal-center {
-    overflow: hidden; 
-    width: 125px;
+    position: relative;
+    width: 50%;
     margin: auto;
 }
 
 .horizontal-center > span {
-    margin: 0 2px 5px 2px;
+    display: inline-block;
+    width: 20%;
     height: 25px;
 }
 
