@@ -99,7 +99,9 @@ class FeedbackDialog extends Component {
                                 value={this.state.method}
                                 onChange={this.methodChanged.bind(this)}
                             />
-                            <Textfield floatingLabel={true} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" rows={2} />
+                            <div className='additional-feedback'>
+                                <Textfield floatingLabel={true} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" rows={2} />
+                            </div>
                             <div className='dialog-actions'>
                                 <Button type='button' onClick={this.postFeedback}>Submit</Button>
                                 <Button type='button' onClick={this.props.close}>Close</Button>

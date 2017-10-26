@@ -207,7 +207,8 @@ body {
 
 .dialog-content {
     position: fixed;
-    width: 350px;
+    width: 300px;
+    height: 400px;
     background: white;
     top: 50%;
     left: 50%;
@@ -222,14 +223,14 @@ body {
     color: rgb(64, 116, 146);
     font-size: 36px;
     height: 40px;
-    padding: 15px;
+    padding: 10px 10px 0 10px;
 }
 
 .dialog-body {
     position: relative;
     margin: auto;
     width: 80%;
-    height: 100%;
+    height: 250px;;
     text-align: center;
     color: rgb(64, 116, 146);
 }
@@ -242,22 +243,18 @@ body {
 
 .horizontal-center > span {
     margin: 0 2px 5px 2px;
-    height: 35px;
+    height: 25px;
 }
 
 .dialog-actions {
     padding-bottom: 10px;
+    height: 60px;
     width: 100%;
 }
 
 .dialog-actions > button {
     margin-right: 15px;
     margin-left: 15px;
-    margin-bottom: 10px;
-}
-
-.mdl-textfield {
-    margin: 20px 0;
 }
 
 .mdl-textfield__label:after {
