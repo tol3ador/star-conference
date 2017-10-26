@@ -82,7 +82,6 @@ class Timer extends Component {
 
         let backgroundColor = secondReminder ? 'orange-background-transition ' : firstReminder ? 'blue-background-transition' : 'white-background';
         let mainTextColor = firstReminder ? 'white-transition' : 'orange-transition';
-        const controlsColor = mainTextColor;
         const additionalTextColor = firstReminder ? secondReminder ? 'white-transition' : 'blue-transition' : 'white';
         
         const mainText = overtime ? 'Maja Nedučić te ljutito gleda!' : 'Preostalo vreme';
@@ -97,23 +96,31 @@ class Timer extends Component {
 
         if (!this.state.showText) {
             mainTextColor = 'white-transition';
-            
         }
 
+        const controlsColor = 'white-transition';
+        const controlsBackground = firstReminder ? backgroundColor : 'orange-background-transition';
+
         return (
-            <div className={`fullscreen ${backgroundColor} uppercase`}  onClick={this.toggleCounter} >
-                <div className="timer">
-                    <div className={`${controlsColor} bottom-right timer-additional-text`}  onMouseEnter={this.toggleText} onMouseLeave={this.toggleText}>
-                        {this.state.paused ? <i class="material-icons">&#xE037;</i> : <i class="material-icons">&#xE034;</i>}
+            <div className='timer-application' onClick={this.toggleCounter}>
+                <div className={`side-controls ${controlsBackground}`} onMouseEnter={this.toggleText} onMouseLeave={this.toggleText}>
+                    <div className="relative-wrapper">
+                        <div className={`${controlsColor} bottom-right timer-additional-text`}>
+                            {this.state.paused ? <i className="material-icons">&#xE037;</i> : <i className="material-icons">&#xE034;</i>}
+                        </div>
+                        <div className={`${controlsColor} top-right timer-additional-text`}>
+                            {this.state.showText || firstReminder ? <i class="material-icons">&#xE8F4;</i> : <i class="material-icons">&#xE8F5;</i>}
+                        </div>
                     </div>
-                    <div className={`${controlsColor} top-right timer-additional-text`}  onMouseEnter={this.toggleText} onMouseLeave={this.toggleText}>
-                        {this.state.showText || firstReminder ? <i class="material-icons">&#xE8F4;</i> : <i class="material-icons">&#xE8F5;</i>}
+                </div>
+                <div className={`fullscreen ${backgroundColor} uppercase`} >
+                    <div className="timer">
+                        <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
+                        <h1 className={`${mainTextColor} timer-numbers`}>
+                            {`${minutes} : ${seconds}`}
+                        </h1>
+                        <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                     </div>
-                    <h3 className={`${mainTextColor} timer-main-text`}>{mainText}</h3>
-                    <h1 className={`${mainTextColor} timer-numbers`}>
-                        {`${minutes} : ${seconds}`}
-                    </h1>
-                    <h5 className={`${additionalTextColor} timer-additional-text`}>{additionalText}</h5>
                 </div>
             </div>
         );

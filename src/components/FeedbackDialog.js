@@ -80,27 +80,27 @@ class FeedbackDialog extends Component {
                         </div>
                         <div className='dialog-body'>
                             <label className="feedback-label">Ispunjena očekivanja: </label>
-                            <ReactStars className="horizontal-center" size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
                                 value={this.state.expectation}
                                 onChange={this.expectationChanged.bind(this)}
                             />
                             <label className="feedback-label">Pripremljenost predavača: </label>
-                            <ReactStars className="horizontal-center" size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
                                 value={this.state.readiness}
                                 onChange={this.readinessChanged.bind(this)}
                             />
                             <label className="feedback-label">Metod predavanja: </label>
-                            <ReactStars className="horizontal-center" size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
                                 value={this.state.understandable}
                                 onChange={this.understandableChanged.bind(this)}
                             />
                             <label className="feedback-label">Razumljivost predavanja: </label>
-                            <ReactStars className="horizontal-center" size={32} half={false} color2={'#F15A2B'} color1={'#407492'}
+                            <ReactStars className="horizontal-center" size={24} half={false} color2={'#F15A2B'} color1={'#407492'}
                                 value={this.state.method}
                                 onChange={this.methodChanged.bind(this)}
                             />
                             <div className='additional-feedback'>
-                                <Textfield floatingLabel={true} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" rows={2} />
+                                <Textfield floatingLabel={true} onChange={this.handleFeedbackText.bind(this)} label="Dodatne sugestije ili kritike" rows={3} />
                             </div>
                             <div className='dialog-actions'>
                                 <Button type='button' onClick={this.postFeedback}>Submit</Button>

@@ -11,6 +11,40 @@ body {
     padding: 20px;
 }
 
+.relative-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.scroll {
+    position: fixed;
+	float: left;
+    height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F15A2B;
+}
+
+.scroll::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F15A2B;
+}
+
+.scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #407492;
+}
+
 .logo {
     height: 130px;
 }
@@ -133,18 +167,7 @@ body {
     cursor: pointer;
 }
 
-.fullscreen {
-    display: table;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-}
-
-.timer {
-    vertical-align: middle;
-    display: table-cell;
-    margin: 0 auto;
+.timer-application {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -152,6 +175,43 @@ body {
     -ms-user-select: none;
     user-select: none;
     cursor: pointer;
+}
+
+.fullscreen {
+    display: table;
+    position: absolute;
+    text-align: center;
+    width: calc(100% - 50px);
+    height: 100%;
+    padding-right: 50px;
+}
+
+.timer {
+    vertical-align: middle;
+    display: table-cell;
+    margin: 0 auto;
+}
+
+.side-controls {
+    position: fixed;
+    height: 100%;
+    width: 50px;
+    right: 0;
+    z-index: 9999;
+}
+
+.bottom-right{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 12px;
+}
+
+.top-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px;
 }
 
 .no-decoration {
@@ -175,20 +235,6 @@ body {
     font-size: 200px;
 }
 
-.bottom-right {
-    position: absolute;
-    margin: 25px;
-    bottom: 0;
-    right: 0;
-}
-
-.top-right {
-    position: absolute;
-    margin: 25px;
-    top: 0;
-    right: 0;
-}
-
 /* DIALOG */
 .dialog {
     display: none;
@@ -206,7 +252,7 @@ body {
 }
 
 .dialog-content {
-    position: fixed;
+    position: relative;
     width: 300px;
     height: 400px;
     background: white;
@@ -220,7 +266,7 @@ body {
 .dialog-header {
     display: flex;
     align-items: center;
-    color: rgb(64, 116, 146);
+    color: #407492;
     font-size: 36px;
     height: 40px;
     padding: 10px;
@@ -232,23 +278,21 @@ body {
     width: 80%;
     height: 250px;;
     text-align: center;
-    color: rgb(64, 116, 146);
+    color: #407492;
 }
 
 .horizontal-center {
     overflow: hidden; 
-    width: 160px;
+    width: 125px;
     margin: auto;
 }
 
 .horizontal-center > span {
     margin: 0 2px 5px 2px;
     height: 25px;
-    font-size: 24px;
 }
 
 .dialog-actions {
-    padding-bottom: 10px;
     height: 60px;
     width: 100%;
 }
@@ -259,13 +303,13 @@ body {
 }
 
 .mdl-textfield__label:after {
-    background-color: rgb(64, 116, 146);
+    background-color: #407492;
 }
 
 .mdl-textfield--floating-label.is-focused .mdl-textfield__label {
-    color: rgb(64, 116, 146);
+    color: #407492;
 }
 
 .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
-    color: rgb(64, 116, 146);
+    color: #407492;
 }

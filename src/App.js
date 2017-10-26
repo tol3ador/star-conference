@@ -37,7 +37,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="scroll">
         <FeedbackDialog show={this.state.openDialog} close={this.handleCloseDialog} submit={this.handleCloseDialog} title={this.dialogTitle} submitId={this.speakerId} />
         <div className="header">
           <img src={logo} alt="logo" className="logo"/>
