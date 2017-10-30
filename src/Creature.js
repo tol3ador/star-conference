@@ -22,11 +22,11 @@ const Lean = keyframes`
 
 const Smiley = style.div`
   position: fixed;
-  top: 2em;
-  left: 2em;
+  top: 3em;
+  left: 3em;
 
-  width: 10em;
-  height: 10em;
+  width: 12em;
+  height: 12em;
 
   border-radius: 50%;
 
@@ -68,7 +68,7 @@ const Eye = style.div`
 
     &:after {
       height: 15%;
-      top: 50%;
+      top: 47%;
       right: 15%;
       width: 15%;
     }
