@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import style, { keyframes }from 'styled-components'
+import Creature from './Creature'
 
 const _INTERVAL = 5;
 const _SLIDES = 11;
@@ -8,6 +9,7 @@ class MagicMirror extends Component {
   render(){
     return (
       <Grid>
+        <Creature />
         <Slider>
           <Figure>
             <Slide>
@@ -15,9 +17,7 @@ class MagicMirror extends Component {
                 Tip #1
               </Title>
               <Details>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sed mollis justo. Mauris tempor bibendum orci et rutrum. Nulla facilisi. Suspendisse non vehicula odio. Etiam in dui ornare, ultrices odio non, commodo risus. Suspendisse consectetur felis justo, viverra ornare quam pellentesque ac. Aliquam mollis iaculis justo, non commodo sem placerat quis. Suspendisse a molestie leo. Nullam pretium venenatis purus, eu molestie ligula efficitur vitae. Aenean sollicitudin convallis massa, vel pharetra massa sollicitudin id. Proin luctus libero lobortis dui vestibulum vestibulum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi vel ex in sem consequat placerat id et sapien. Fusce vel viverra diam. Donec efficitur, urna non varius viverra, orci sapien dapibus arcu, at placerat odio orci non odio.
-                <br/>
-                Aliquam interdum at dolor nec euismod. Duis quis lacus sed eros vestibulum mollis. Vestibulum convallis sagittis lacus, ut suscipit tortor ullamcorper at. Suspendisse convallis dolor vel malesuada sodales. Curabitur a lectus vulputate, imperdiet nisi ac, aliquam augue. Fusce suscipit nisl sed nibh consequat facilisis. Maecenas pretium magna sit amet varius pharetra. Quisque elementum dictum purus. Donec quis enim ac metus tempor consequat vel luctus justo. Vestibulum mollis tortor elit, consequat aliquet risus hendrerit ac. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae mattis tellus, non blandit ligula. Quisque a mauris nisi. Proin tincidunt facilisis odio id ornare. Ut augue est, dapibus non tempor ac, maximus et mauris. Aenean imperdiet quam tellus, in feugiat nibh bibendum sit amet.
+                <h1>Give up the belief that you have to be perfect.</h1>
               </Details>
             </Slide>
             <Slide>
