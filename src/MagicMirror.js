@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import style, { keyframes }from 'styled-components'
 
-const Interval = 1000;
+const _INTERVAL = 5;
+const _SLIDES = 11;
 
 class MagicMirror extends Component {
   render(){
@@ -190,18 +191,18 @@ const Slider = style.div`
 `
 const Figure = style.div`
   position: relative;
-  width: 1100%;
+  width: ${_SLIDES*100}%;
 
   margin: 0;
   left: 0;
 
-  animation: ${slide} 33s infinite;
+  animation: ${slide} ${_INTERVAL*_SLIDES}s infinite;
 `
-//animation: ${slide} 110s infinite;
+
 const Slide = style.div`
   box-sizing: border-box;
 
-  width: ${100.0/11}%;
+  width: ${100.0/_SLIDES}%;
   float: left;
 
   text-align: center;
