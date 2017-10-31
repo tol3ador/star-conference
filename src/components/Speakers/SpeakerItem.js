@@ -16,6 +16,7 @@ class SpeakerItem extends Component {
                         {this.props.name}
                     </span>
                     <Icon name="speaker_notes" className="font-white" />
+                    <span></span>
                 </CardActions>
             </Card>
         );
