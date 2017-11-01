@@ -6,7 +6,7 @@ const _SLIDES = 11;
 
 const tips = require('./resources/static_tips.json')
 const logo = require('./resources/logo.png')
-const image1 = require('./resources/img/1.jpg')
+
 class MagicMirror extends Component {
     render(){
     return (
@@ -33,7 +33,7 @@ class MagicMirror extends Component {
                                 }
                                 </Text>
                                 <ImageContainer>
-                                    <img src={image1} alt={tip.title}/>
+                                    <img src={require(`./resources/img/${tip.id}.jpg`)} alt={tip.title}/>
                                 </ImageContainer>
                                 </Content>
                             </Details>
@@ -60,7 +60,7 @@ const LogoContainer = style.div `
   }
 `
 const Logo = style.img`
-width: 100%;
+  width: 100%;
 ` 
 const Content = style.div `
   display: flex;
@@ -74,24 +74,24 @@ const Content = style.div `
   }
 `
 const Text = style.div `
-width: 50%;
-padding: 20px;
-p {
-  font-family: 'Raleway', sans-serif;
-  font-size: 36px;
-  line-height: 50px;
-  margin-bottom: 20px;
-  display: block;
-  text-align: left;
-}
-@media only screen and (max-width: 991px) {
-  width: 100%;
+  width: 50%;
+  padding: 20px;
   p {
-    font-size: 18px;
-    line-height: 28px;
-    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    display: block;
+    text-align: left;
   }
-}
+  @media only screen and (max-width: 991px) {
+    width: 100%;
+    p {
+      font-size: 18px;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
 `
 const slide = keyframes`
   0%, 8%, 100% { left: 0%; opacity: 1; }
