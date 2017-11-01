@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import style, { keyframes }from 'styled-components'
-import Creature from './Creature'
 
 const _INTERVAL = 15;
 const _SLIDES = 11;
@@ -8,34 +7,35 @@ const _SLIDES = 11;
 const tips = require('./resources/static_tips.json')
 const logo = require('./resources/logo.png')
 const image1 = require('./resources/img/1.jpg')
-
 class MagicMirror extends Component {
     render(){
     return (
       <Container>
-        <Logo src={logo}/>
-        <Creature />
+        <LogoContainer>
+          <Logo src={logo}/>
+        </LogoContainer>
         <Slider>
           <Figure>
             {
                 tips.map(tip => {
                     return (
                         <Slide>
-                            <Title>
-                                {tip.title}
-                            </Title>
                             <Details>
+                            <Content>
                                 <h1>{tip.header}</h1>
-                                <div>
+                                </Content>
+                                <Content>
+                                <Text>
                                 {
                                     tip.items.map(item => {
                                         return <p>{item}</p>
                                     })
                                 }
-                                </div>
-                                <div>
-                                    <Image src={image1} alt={tip.title}/>
-                                </div>
+                                </Text>
+                                <ImageContainer>
+                                    <img src={image1} alt={tip.title}/>
+                                </ImageContainer>
+                                </Content>
                             </Details>
                         </Slide>
                     )
@@ -47,7 +47,52 @@ class MagicMirror extends Component {
     )
   }
 }
-
+const LogoContainer = style.div `
+  width: 170px;
+  position: fixed;
+  right: 5px;
+  top: 20px;
+  z-index: 2;
+  background-color: #000;
+  @media only screen and (max-width: 991px) {
+    width: 80px;
+    top: 15px;
+  }
+`
+const Logo = style.img`
+width: 100%;
+` 
+const Content = style.div `
+  display: flex;
+  align-items: center;
+  flex-wrap : wrap;
+  min-height: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+  * {
+    box-sizing: border-box;
+  }
+`
+const Text = style.div `
+width: 50%;
+padding: 20px;
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 36px;
+  line-height: 50px;
+  margin-bottom: 20px;
+  display: block;
+  text-align: left;
+}
+@media only screen and (max-width: 991px) {
+  width: 100%;
+  p {
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+  }
+}
+`
 const slide = keyframes`
   0%, 8%, 100% { left: 0%; opacity: 1; }
   9%, 17% { left: -100%; opacity: 1; }
@@ -63,20 +108,12 @@ const slide = keyframes`
   8.3%, 8.8%, 17.3%, 17.8%, 26.3%, 26.8%, 35.3%, 35.8%, 44.3%, 44.8%, 53.3%, 53.8%, 62.3%, 62.8%, 71.3%, 71.8%, 80.3%, 80.8%, 89.3%, 89.8%, 98.6%, 99.99% { opacity: 0; }
 `;
 
-const Logo = style.img`
-  position: fixed;
-  top: 3em;
-  right: 3em;
-  width: 12em;
-`
-
 const Container = style.div`
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  padding: 3em 7em;
   background: black;
   color: white;
-
+  min-height: 100%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -84,57 +121,59 @@ const Container = style.div`
   -ms-user-select: none;
   user-select: none;
   cursor: default;
+  @media only screen and (max-width: 991px) {
+    //padding 20px;
+  }
 `
 
 const Slider = style.div`
   padding: 0;
   margin: 0;
-
   overflow: hidden;
+  background: black;
 `
 const Figure = style.div`
   position: relative;
   width: ${_SLIDES*100}%;
-
   margin: 0;
   left: 0;
-
   animation: ${slide} ${_INTERVAL*_SLIDES}s infinite;
 `
 
 const Slide = style.div`
   box-sizing: border-box;
-
   width: ${100.0/_SLIDES}%;
   float: left;
-
   text-align: center;
 `
 
-const Title = style.h1`
-  font-family: 'Indie Flower', cursive;
-  font-size: 7em;
-`
 
 const Details = style.div`
-  padding-top: 3em;
-
-  > h1 {
+  padding-top: 40px;
+   h1 {
     font-family: 'Indie Flower', cursive;
-    font-size: 5em
-  }
-
-   p {
-    font-family: 'Raleway', sans-serif;
-    font-size: 36px;
-    line-height: 50px;
-    margin-bottom: 20px;
+    font-size: 5em;
+    margin: 25px auto;
     display: block;
+    color: #fff832;
+  }
+  @media only screen and (max-width: 991px) {
+    h1 {
+    font-size: 36px;
+    line-height: 42px;
+    margin: 60px auto 0;
+  }
+}
 
+`
+
+const ImageContainer = style.div`
+  width: 50%;
+  img {
+  width: 100%;
+  }
+  @media only screen and (max-width: 991px) {
+    width: 100%;
   }
 `
-const Image = style.img`
-    width: 100%;
-`;
-
 export default MagicMirror;
