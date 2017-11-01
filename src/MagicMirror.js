@@ -7,9 +7,10 @@ const _SLIDES = 11;
 
 const tips = require('./resources/static_tips.json')
 const logo = require('./resources/logo.png')
+const image1 = require('./resources/img/1.jpg')
 
 class MagicMirror extends Component {
-  render(){
+    render(){
     return (
       <Container>
         <Logo src={logo}/>
@@ -17,23 +18,28 @@ class MagicMirror extends Component {
         <Slider>
           <Figure>
             {
-              tips.map(tip => {
-                return (
-                  <Slide>
-                    <Title>
-                      {tip.title}
-                    </Title>
-                    <Details>
-                      <h1>{tip.header}</h1>
-                      {
-                        tip.items.map(item => {
-                          return <h3>{item}</h3>
-                        })
-                      }
-                    </Details>
-                  </Slide>
-                )
-              })
+                tips.map(tip => {
+                    return (
+                        <Slide>
+                            <Title>
+                                {tip.title}
+                            </Title>
+                            <Details>
+                                <h1>{tip.header}</h1>
+                                <div>
+                                {
+                                    tip.items.map(item => {
+                                        return <p>{item}</p>
+                                    })
+                                }
+                                </div>
+                                <div>
+                                    <Image src={image1} alt={tip.title}/>
+                                </div>
+                            </Details>
+                        </Slide>
+                    )
+                })
             }
           </Figure>
         </Slider>
@@ -61,9 +67,7 @@ const Logo = style.img`
   position: fixed;
   top: 3em;
   right: 3em;
-
   width: 12em;
-  height: 12em;
 `
 
 const Container = style.div`
@@ -120,10 +124,17 @@ const Details = style.div`
     font-size: 5em
   }
 
-  > h3 {
-    font-family: 'Indie Flower', cursive;
-    font-size: 3em;
+   p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    line-height: 50px;
+    margin-bottom: 20px;
+    display: block;
+
   }
 `
+const Image = style.img`
+    width: 100%;
+`;
 
 export default MagicMirror;
