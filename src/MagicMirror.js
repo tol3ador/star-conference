@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import style, { keyframes }from 'styled-components'
 
-const _INTERVAL = 15;
+const _INTERVAL = 7;
 const _SLIDES = 11;
 
 const tips = require('./resources/static_tips.json')
@@ -21,10 +21,10 @@ class MagicMirror extends Component {
                     return (
                         <Slide>
                             <Details>
-                            <Content>
+                              <Content>
                                 <h1>{tip.header}</h1>
-                                </Content>
-                                <Content>
+                              </Content>
+                              <Content>
                                 <Text>
                                 {
                                     tip.items.map(item => {
@@ -35,7 +35,7 @@ class MagicMirror extends Component {
                                 <ImageContainer>
                                     <img src={require(`./resources/img/${tip.id}.jpg`)} alt={tip.title}/>
                                 </ImageContainer>
-                                </Content>
+                              </Content>
                             </Details>
                         </Slide>
                     )
@@ -47,6 +47,16 @@ class MagicMirror extends Component {
     )
   }
 }
+const Sidenav = style.div`
+  position: fixed;
+  background: papayawhip;
+  color: black;
+  top: 0; left: 0; bottom: 0;
+  width: 250px;
+  box-sizing: border-box;
+  padding: 30px;
+`
+
 const LogoContainer = style.div `
   width: 170px;
   position: fixed;
@@ -106,8 +116,7 @@ const slide = keyframes`
   81%, 89% { left: -900%; opacity: 1; }
   90%, 98% { left: -1000%; opacity: 1; }
   8.3%, 8.8%, 17.3%, 17.8%, 26.3%, 26.8%, 35.3%, 35.8%, 44.3%, 44.8%, 53.3%, 53.8%, 62.3%, 62.8%, 71.3%, 71.8%, 80.3%, 80.8%, 89.3%, 89.8%, 98.6%, 99.99% { opacity: 0; }
-`;
-
+`
 const Container = style.div`
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -125,10 +134,10 @@ const Container = style.div`
     //padding 20px;
   }
 `
-
 const Slider = style.div`
   padding: 0;
   margin: 0;
+  //margin-left: 250px; //Enabled if sidenav is rendered
   overflow: hidden;
   background: black;
 `
@@ -139,15 +148,12 @@ const Figure = style.div`
   left: 0;
   animation: ${slide} ${_INTERVAL*_SLIDES}s infinite;
 `
-
 const Slide = style.div`
   box-sizing: border-box;
   width: ${100.0/_SLIDES}%;
   float: left;
   text-align: center;
 `
-
-
 const Details = style.div`
   padding-top: 40px;
    h1 {
@@ -162,11 +168,9 @@ const Details = style.div`
     font-size: 36px;
     line-height: 42px;
     margin: 60px auto 0;
+    }
   }
-}
-
 `
-
 const ImageContainer = style.div`
   width: 50%;
   img {
