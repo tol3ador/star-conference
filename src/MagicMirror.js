@@ -96,14 +96,15 @@ class MagicMirror extends Component {
 }
 const Sidenav = style.div`
   position: fixed;
-  background: papayawhip;
-  color: black;
   top: 0; left: 0; bottom: 0;
   width: 250px;
   box-sizing: border-box;
   padding: 30px;
 
+  background: black;
+
   p:nth-child(${props => props.active ? props.active+1 : 1}) {
+    font-weight: bold;
     color: palevioletred;
   }
 `
@@ -115,6 +116,7 @@ const LogoContainer = style.div `
   top: 20px;
   z-index: 2;
   background-color: #000;
+
   @media only screen and (max-width: 991px) {
     width: 80px;
     top: 15px;
@@ -127,7 +129,7 @@ const Content = style.div `
   display: flex;
   align-items: center;
   flex-wrap : wrap;
-  min-height: 100%;
+  min-height: calc(100% - 180px);
 	max-width: 1400px;
 	margin: 0 auto;
   * {
@@ -158,11 +160,11 @@ const fade = keyframes`
   0%:   { opacity: 1; }
   30%:  { opacity: 0; }
   80%:  { opacity: 0; }
-  100%: { opacity: 1; }
+  100%: { opacity: 1; left: ${props => props.active ? -100*props.active : 0}%; }
 `
 const Container = style.div`
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0; right: 0; bottom: 0; left: 250px;
   background: black;
   color: white;
   min-height: 100%;
@@ -180,9 +182,9 @@ const Container = style.div`
 const Slider = style.div`
   padding: 0;
   margin: 0;
-  margin-left: 250px; //Enabled if sidenav is rendered
   overflow: hidden;
   background: black;
+  height: 100%;
 `
 const Figure = style.div`
   position: relative;
