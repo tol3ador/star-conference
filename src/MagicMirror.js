@@ -29,8 +29,8 @@ class MagicMirror extends Component {
       this.setState({
         active: (this.state.active-1)%11
       })
-      this.tick();
       clearTimeout(this.timeout)
+      this.tick();
     }
     if(event.key === `${_KEY_UP}`){
       this.setState({
@@ -52,11 +52,17 @@ class MagicMirror extends Component {
     return (
       <Container onKeyDown={this.changeSlide}>
         <Sidenav active={this.state.active}>
+        <ul>
           {
             tips.map(tip => {
-              return <p id={tip.id}>{tip.header}</p>
+              return (
+                <li id={tip.id}>
+                  <a>{tip.header}</a>
+                </li>
+              )
             })
           }
+          </ul>
         </Sidenav>
         <LogoContainer>
           <Logo src={logo}/>
@@ -68,9 +74,7 @@ class MagicMirror extends Component {
                 return (
                   <Slide>
                     <Details>
-                      <Content>
                         <h1>{tip.header}</h1>
-                      </Content>
                       <Content>
                         <Text>
                         {
@@ -94,135 +98,161 @@ class MagicMirror extends Component {
     )
   }
 }
-const Sidenav = style.div`
-  position: fixed;
-  top: 0; left: 0; bottom: 0;
-  width: 250px;
-  box-sizing: border-box;
-  padding: 30px;
 
-  background: black;
-
-  p:nth-child(${props => props.active ? props.active+1 : 1}) {
-    font-weight: bold;
-    color: palevioletred;
+const Sidenav = style.nav`
+position: fixed;
+background: papayawhip;
+background-color: black;
+top: 0; left: 0; bottom: 0;
+width: 250px;
+box-sizing: border-box;
+padding: 30px;
+display: flex;
+align-items: center;
+ul {
+  list-style: none;
+  padding-left: 0;
+  li:nth-child(${props => props.active ? props.active+1 : 1}) a {
+    color: #fff;
   }
+}
+a {
+  font-family: 'Indie Flower', cursive;
+  text-decoration: none;
+  font-size: 19px;
+  line-height: 21px;
+ color: #ffa200;
+ color: #fff832;
+  display: block;
+  margin: 20px 0;
+}
+
+@media only screen and (max-width: 991px) {
+  display: none;
+}
+
 `
 
 const LogoContainer = style.div `
-  width: 170px;
-  position: fixed;
-  right: 5px;
-  top: 20px;
-  z-index: 2;
-  background-color: #000;
-
-  @media only screen and (max-width: 991px) {
-    width: 80px;
-    top: 15px;
-  }
+width: 170px;
+position: fixed;
+right: 5px;
+top: 20px;
+z-index: 2;
+background-color: #000;
+@media only screen and (max-width: 991px) {
+width: 80px;
+top: 15px;
+}
 `
 const Logo = style.img`
-  width: 100%;
+width: 100%;
 ` 
 const Content = style.div `
-  display: flex;
-  align-items: center;
-  flex-wrap : wrap;
-  min-height: calc(100% - 180px);
-	max-width: 1400px;
-	margin: 0 auto;
-  * {
-    box-sizing: border-box;
-  }
+display: flex;
+align-items: center;
+flex-wrap : wrap;
+min-height: calc(100% - 180px);
+max-width: 1400px;
+margin: 0 auto;
+* {
+box-sizing: border-box;
+}
 `
 const Text = style.div `
-  width: 50%;
-  padding: 20px;
-  p {
-    font-family: 'Raleway', sans-serif;
-    font-size: 36px;
-    line-height: 38px;
-    margin-bottom: 20px;
-    display: block;
-    text-align: left;
-  }
-  @media only screen and (max-width: 991px) {
-    width: 100%;
-    p {
-      font-size: 18px;
-      line-height: 28px;
-      text-align: center;
-    }
-  }
+width: 50%;
+padding: 20px;
+p {
+font-family: 'Raleway', sans-serif;
+font-size: 36px;
+line-height: 44px;
+margin-bottom: 20px;
+display: block;
+text-align: left;
+}
+@media only screen and (max-width: 991px) {
+width: 100%;
+p {
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+}
+}
 `
-const fade = keyframes`
-  0%:   { opacity: 1; }
-  30%:  { opacity: 0; }
-  80%:  { opacity: 0; }
-  100%: { opacity: 1; left: ${props => props.active ? -100*props.active : 0}%; }
-`
+
 const Container = style.div`
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 250px;
-  background: black;
-  color: white;
-  min-height: 100%;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
-  @media only screen and (max-width: 991px) {
-    //padding 20px;
-  }
+position: absolute;
+top: 0; right: 0; bottom: 0; left: 180px;
+background: black;
+color: white;
+min-height: 100%;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+cursor: default;
+@media only screen and (max-width: 991px) {
+//padding 20px;
+left: 0;
+}
 `
+
 const Slider = style.div`
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  background: black;
-  height: 100%;
+padding: 0;
+margin: 0;
+overflow: hidden;
+background: black;
+height: 100%;
 `
 const Figure = style.div`
-  position: relative;
-  width: ${_SLIDES*100}%;
-  margin: 0;
-  left: ${props => props.active ? -100*props.active : 0}%;
-  transition: all 0.5s ease-in-out;
+position: relative;
+width: ${_SLIDES*100}%;
+margin: 0;
+left: 0;
+height: 100%;
+left: ${props => props.active ? -100*props.active : 0}%;
+transition: all 0.5s ease-in-out;
 `
+
 const Slide = style.div`
-  box-sizing: border-box;
-  width: ${100.0/_SLIDES}%;
-  float: left;
-  text-align: center;
+height 100%;
+box-sizing: border-box;
+width: ${100.0/_SLIDES}%;
+float: left;
+text-align: center;
 `
+
+
 const Details = style.div`
-  padding-top: 40px;
-   h1 {
-    font-family: 'Indie Flower', cursive;
-    font-size: 5em;
-    margin: 25px auto;
-    display: block;
-    color: #fff832;
-  }
-  @media only screen and (max-width: 991px) {
-    h1 {
-    font-size: 36px;
-    line-height: 42px;
-    margin: 60px auto 0;
-    }
-  }
+padding-top: 40px;
+height calc(100% - 40px);
+h1 {
+font-family: 'Indie Flower', cursive;
+font-size: 5em;
+margin: 25px auto;
+margin-right: 200px;
+display: block;
+color: #fff832;
+}
+@media only screen and (max-width: 991px) {
+h1 {
+font-size: 36px;
+line-height: 42px;
+margin: 60px auto 0;
+}
+}
+
 `
+
 const ImageContainer = style.div`
-  width: 50%;
-  img {
-  width: 100%;
-  }
-  @media only screen and (max-width: 991px) {
-    width: 100%;
-  }
+width: 50%;
+img {
+width: 100%;
+}
+@media only screen and (max-width: 991px) {
+width: 100%;
+}
 `
 export default MagicMirror;
