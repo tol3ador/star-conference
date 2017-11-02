@@ -231,7 +231,7 @@ height calc(100% - 40px);
 h1 {
 font-family: 'Indie Flower', cursive;
 font-size: 5em;
-margin: 25px auto;
+margin: 25px auto 5px;
 margin-right: 200px;
 display: block;
 color: #fff832;
