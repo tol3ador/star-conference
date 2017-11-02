@@ -1,45 +1,92 @@
 import React, { Component } from 'react'
 import style, { keyframes }from 'styled-components'
 
-const _INTERVAL = 7;
+const _INTERVAL = 3;
 const _SLIDES = 11;
+
+const _KEY_DOWN = 40
+const _KEY_UP = 38
 
 const tips = require('./resources/static_tips.json')
 const logo = require('./resources/logo.png')
 
 class MagicMirror extends Component {
-    render(){
+  constructor(props){
+    super(props)
+
+    this.state = {
+      active: 0,
+    }
+    this.tick = this.tick.bind(this)
+    this.changeSlide = this.changeSlide.bind(this)
+
+    this.tick();
+  }
+
+  changeSlide(event) {
+    alert(event.key)
+    if(event.key === `${_KEY_DOWN}`){
+      this.setState({
+        active: (this.state.active-1)%11
+      })
+      this.tick();
+      clearTimeout(this.timeout)
+    }
+    if(event.key === `${_KEY_UP}`){
+      this.setState({
+        active: (this.state.active+1)%11
+      })
+      clearTimeout(this.timeout)
+      this.tick();
+    }
+  }
+
+  tick(){
+    this.setState({
+        active: (this.state.active+1)%_SLIDES,
+    })
+    this.timeout = setTimeout(this.tick, _INTERVAL*1000)
+  }
+
+  render(){
     return (
-      <Container>
+      <Container onKeyDown={this.changeSlide}>
+        <Sidenav active={this.state.active}>
+          {
+            tips.map(tip => {
+              return <p id={tip.id}>{tip.header}</p>
+            })
+          }
+        </Sidenav>
         <LogoContainer>
           <Logo src={logo}/>
         </LogoContainer>
         <Slider>
-          <Figure>
+          <Figure active={this.state.active}>
             {
-                tips.map(tip => {
-                    return (
-                        <Slide>
-                            <Details>
-                              <Content>
-                                <h1>{tip.header}</h1>
-                              </Content>
-                              <Content>
-                                <Text>
-                                {
-                                    tip.items.map(item => {
-                                        return <p>{item}</p>
-                                    })
-                                }
-                                </Text>
-                                <ImageContainer>
-                                    <img src={require(`./resources/img/${tip.id}.jpg`)} alt={tip.title}/>
-                                </ImageContainer>
-                              </Content>
-                            </Details>
-                        </Slide>
-                    )
-                })
+              tips.map(tip => {
+                return (
+                  <Slide>
+                    <Details>
+                      <Content>
+                        <h1>{tip.header}</h1>
+                      </Content>
+                      <Content>
+                        <Text>
+                        {
+                          tip.items.map(item => {
+                            return <p>{item}</p>
+                          })
+                        }
+                        </Text>
+                        <ImageContainer>
+                          <img src={require(`./resources/img/${tip.id}.jpg`)} alt={tip.title}/>
+                        </ImageContainer>
+                      </Content>
+                    </Details>
+                  </Slide>
+                )
+              })
             }
           </Figure>
         </Slider>
@@ -55,6 +102,10 @@ const Sidenav = style.div`
   width: 250px;
   box-sizing: border-box;
   padding: 30px;
+
+  p:nth-child(${props => props.active ? props.active+1 : 1}) {
+    color: palevioletred;
+  }
 `
 
 const LogoContainer = style.div `
@@ -103,19 +154,11 @@ const Text = style.div `
     }
   }
 `
-const slide = keyframes`
-  0%, 8%, 100% { left: 0%; opacity: 1; }
-  9%, 17% { left: -100%; opacity: 1; }
-  18%, 26% { left: -200%; opacity: 1; }
-  27%, 35% { left: -300%; opacity: 1; }
-  36%, 44% { left: -400%; opacity: 1; }
-  45%, 53% { left: -500%; opacity: 1; }
-  54%, 62% { left: -600%; opacity: 1; }
-  63%, 71% { left: -700%; opacity: 1; }
-  72%, 80% { left: -800%; opacity: 1; }
-  81%, 89% { left: -900%; opacity: 1; }
-  90%, 98% { left: -1000%; opacity: 1; }
-  8.3%, 8.8%, 17.3%, 17.8%, 26.3%, 26.8%, 35.3%, 35.8%, 44.3%, 44.8%, 53.3%, 53.8%, 62.3%, 62.8%, 71.3%, 71.8%, 80.3%, 80.8%, 89.3%, 89.8%, 98.6%, 99.99% { opacity: 0; }
+const fade = keyframes`
+  0%:   { opacity: 1; }
+  30%:  { opacity: 0; }
+  80%:  { opacity: 0; }
+  100%: { opacity: 1; }
 `
 const Container = style.div`
   position: absolute;
@@ -137,7 +180,7 @@ const Container = style.div`
 const Slider = style.div`
   padding: 0;
   margin: 0;
-  //margin-left: 250px; //Enabled if sidenav is rendered
+  margin-left: 250px; //Enabled if sidenav is rendered
   overflow: hidden;
   background: black;
 `
@@ -145,8 +188,8 @@ const Figure = style.div`
   position: relative;
   width: ${_SLIDES*100}%;
   margin: 0;
-  left: 0;
-  animation: ${slide} ${_INTERVAL*_SLIDES}s infinite;
+  left: ${props => props.active ? -100*props.active : 0}%;
+  transition: all 0.5s ease-in-out;
 `
 const Slide = style.div`
   box-sizing: border-box;
