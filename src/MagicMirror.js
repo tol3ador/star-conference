@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import style, { keyframes }from 'styled-components'
 
-const _INTERVAL = 3;
+const _INTERVAL = 15;
 const _SLIDES = 11;
 
 const _KEY_DOWN = 40
@@ -17,46 +17,52 @@ class MagicMirror extends Component {
     this.state = {
       active: 0,
     }
+    
     this.tick = this.tick.bind(this)
-    this.changeSlide = this.changeSlide.bind(this)
 
+    this.changeSlide = this.changeSlide.bind(this)
     this.tick();
   }
 
   changeSlide(event) {
-    alert(event.key)
-    if(event.key === `${_KEY_DOWN}`){
+    if(event.keyCode === _KEY_DOWN){
       this.setState({
-        active: (this.state.active-1)%11
+        active: (this.state.active+1)%_SLIDES
       })
       clearTimeout(this.timeout)
-      this.tick();
+      this.tick(true);
     }
-    if(event.key === `${_KEY_UP}`){
+    if(event.keyCode === _KEY_UP){
       this.setState({
-        active: (this.state.active+1)%11
+        active: (this.state.active-1)%_SLIDES
       })
       clearTimeout(this.timeout)
-      this.tick();
+      this.tick(true);
     }
   }
 
-  tick(){
-    this.setState({
+  tick(doNotChangeState){
+    if(!doNotChangeState){
+      this.setState({
         active: (this.state.active+1)%_SLIDES,
-    })
+      })
+    }
+    
     this.timeout = setTimeout(this.tick, _INTERVAL*1000)
   }
 
   render(){
     return (
-      <Container onKeyDown={this.changeSlide}>
+      <Container>
+        <MyInput
+        onKeyDown={ this.changeSlide }
+        />
         <Sidenav active={this.state.active}>
         <ul>
           {
             tips.map(tip => {
               return (
-                <li id={tip.id}>
+                <li key={tip.id} id={tip.id}>
                   <a>{tip.header}</a>
                 </li>
               )
@@ -72,14 +78,14 @@ class MagicMirror extends Component {
             {
               tips.map(tip => {
                 return (
-                  <Slide>
+                  <Slide key={tip.id}>
                     <Details>
                         <h1>{tip.header}</h1>
                       <Content>
                         <Text>
                         {
-                          tip.items.map(item => {
-                            return <p>{item}</p>
+                          tip.items.map((item, index) => {
+                            return <p key={index}>{item}</p>
                           })
                         }
                         </Text>
@@ -98,6 +104,17 @@ class MagicMirror extends Component {
     )
   }
 }
+
+const MyInput = style.input`
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+  opacity: 0;
+`
 
 const Sidenav = style.nav`
 position: fixed;
@@ -182,7 +199,7 @@ p {
 
 const Container = style.div`
 position: absolute;
-top: 0; right: 0; bottom: 0; left: 180px;
+top: 0; right: 0; bottom: 0; left: 250px;
 background: black;
 color: white;
 min-height: 100%;
@@ -231,10 +248,12 @@ height calc(100% - 40px);
 h1 {
 font-family: 'Indie Flower', cursive;
 font-size: 5em;
+line-height: 70px;
 margin: 25px auto 5px;
 margin-right: 200px;
 display: block;
 color: #fff832;
+width: calc(100% - 300px);
 }
 @media only screen and (max-width: 991px) {
 h1 {
