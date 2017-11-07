@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import style, { keyframes }from 'styled-components'
+import style, { keyframes } from 'styled-components'
 
 const _INTERVAL = 15;
 const _SLIDES = 11;
@@ -11,101 +11,110 @@ const tips = require('./resources/static_tips.json')
 const logo = require('./resources/logo.png')
 
 class MagicMirror extends Component {
-  constructor(props){
-    super(props)
+    constructor(props) {
+        super(props)
 
-    this.state = {
-      active: 0,
+        this.state = {
+            active: 0,
+        }
+
+        this.tick = this.tick.bind(this)
+
+        this.changeSlide = this.changeSlide.bind(this)
+        this.tick();
     }
-    
-    this.tick = this.tick.bind(this)
 
-    this.changeSlide = this.changeSlide.bind(this)
-    this.tick();
-  }
-
-  changeSlide(event) {
-    if(event.keyCode === _KEY_DOWN){
-      this.setState({
-        active: (this.state.active+1)%_SLIDES
-      })
-      clearTimeout(this.timeout)
-      this.tick(true);
-    }
-    if(event.keyCode === _KEY_UP){
-      this.setState({
-        active: (this.state.active-1)%_SLIDES
-      })
-      clearTimeout(this.timeout)
-      this.tick(true);
-    }
-  }
-
-  tick(doNotChangeState){
-    if(!doNotChangeState){
-      this.setState({
-        active: (this.state.active+1)%_SLIDES,
-      })
-    }
-    
-    this.timeout = setTimeout(this.tick, _INTERVAL*1000)
-  }
-
-  render(){
-    return (
-      <Container>
-        <MyInput
-        onKeyDown={ this.changeSlide }
-        />
-        <Sidenav active={this.state.active}>
-        <ul>
-          {
-            tips.map(tip => {
-              return (
-                <li key={tip.id} id={tip.id}>
-                  <a>{tip.header}</a>
-                </li>
-              )
+    changeSlide(event) {
+        if (event.keyCode === _KEY_DOWN) {
+            this.setState({
+                active: (this.state.active + 1) % _SLIDES
             })
-          }
-          </ul>
-        </Sidenav>
-        <LogoContainer>
-          <Logo src={logo}/>
-        </LogoContainer>
-        <Slider>
-          <Figure active={this.state.active}>
-            {
-              tips.map(tip => {
-                return (
-                  <Slide key={tip.id}>
-                    <Details>
-                        <h1>{tip.header}</h1>
-                      <Content>
-                        <Text>
-                        {
-                          tip.items.map((item, index) => {
-                            return <p key={index}>{item}</p>
-                          })
-                        }
-                        </Text>
-                        <ImageContainer>
-                          <img src={require(`./resources/img/${tip.id}.jpg`)} alt={tip.title}/>
-                        </ImageContainer>
-                      </Content>
-                    </Details>
-                  </Slide>
-                )
-              })
-            }
-          </Figure>
-        </Slider>
-      </Container>
-    )
-  }
+            clearTimeout(this.timeout)
+            this.tick(true);
+        }
+        if (event.keyCode === _KEY_UP) {
+            this.setState({
+                active: (this.state.active - 1) % _SLIDES
+            })
+            clearTimeout(this.timeout)
+            this.tick(true);
+        }
+    }
+
+    tick(doNotChangeState) {
+        if (!doNotChangeState) {
+            this.setState({
+                active: (this.state.active + 1) % _SLIDES,
+            })
+        }
+
+        this.timeout = setTimeout(this.tick, _INTERVAL * 1000)
+    }
+
+    render() {
+        return ( <
+            Container >
+            <
+            MyInput onKeyDown = { this.changeSlide }
+            /> <
+            Sidenav active = { this.state.active } >
+            <
+            ul > {
+                tips.map(tip => {
+                    return ( <
+                        li key = { tip.id }
+                        id = { tip.id } >
+                        <
+                        a > { tip.header } < /a> < /
+                        li >
+                    )
+                })
+            } <
+            /ul> < /
+            Sidenav > <
+            LogoContainer >
+            <
+            Logo src = { logo }
+            /> < /
+            LogoContainer > <
+            Slider >
+            <
+            Figure active = { this.state.active } > {
+                tips.map(tip => {
+                    return ( <
+                        Slide key = { tip.id } >
+                        <
+                        Details >
+                        <
+                        h1 > { tip.header } < /h1> <
+                        Content >
+                        <
+                        Text > {
+                            tip.items.map((item, index) => {
+                                return <p key = { index } > { item } < /p>
+                            })
+                        } <
+                        /Text> <
+                        ImageContainer >
+                        <
+                        img src = { require(`./resources/img/${tip.id}.jpg`) }
+                        alt = { tip.title }
+                        /> < /
+                        ImageContainer > <
+                        /Content> < /
+                        Details > <
+                        /Slide>
+                    )
+                })
+            } <
+            /Figure> < /
+            Slider > <
+            /Container>
+        )
+    }
 }
 
-const MyInput = style.input`
+const MyInput = style.input `
   position: fixed;
   left: 0;
   top: 0;
@@ -114,9 +123,12 @@ const MyInput = style.input`
   width: 100%;
   z-index: 999;
   opacity: 0;
+  @media only screen and (max-width: 991px) {
+    displaY:none;
+  }
 `
 
-const Sidenav = style.nav`
+const Sidenav = style.nav `
 position: fixed;
 background: papayawhip;
 background-color: black;
@@ -162,9 +174,9 @@ width: 80px;
 top: 15px;
 }
 `
-const Logo = style.img`
+const Logo = style.img `
 width: 100%;
-` 
+`
 const Content = style.div `
 display: flex;
 align-items: center;
@@ -197,7 +209,7 @@ p {
 }
 `
 
-const Container = style.div`
+const Container = style.div `
 position: absolute;
 top: 0; right: 0; bottom: 0; left: 250px;
 background: black;
@@ -211,19 +223,19 @@ min-height: 100%;
 user-select: none;
 cursor: default;
 @media only screen and (max-width: 991px) {
-//padding 20px;
 left: 0;
+overflow: auto;
 }
 `
 
-const Slider = style.div`
+const Slider = style.div `
 padding: 0;
 margin: 0;
 overflow: hidden;
 background: black;
 height: 100%;
 `
-const Figure = style.div`
+const Figure = style.div `
 position: relative;
 width: ${_SLIDES*100}%;
 margin: 0;
@@ -231,9 +243,12 @@ left: 0;
 height: 100%;
 left: ${props => props.active ? -100*props.active : 0}%;
 transition: all 0.5s ease-in-out;
+@media only screen and (max-width: 991px) {
+  overflow: auto;
+}
 `
 
-const Slide = style.div`
+const Slide = style.div `
 height 100%;
 box-sizing: border-box;
 width: ${100.0/_SLIDES}%;
@@ -242,7 +257,7 @@ text-align: center;
 `
 
 
-const Details = style.div`
+const Details = style.div `
 padding-top: 40px;
 height calc(100% - 40px);
 h1 {
@@ -254,24 +269,24 @@ margin-right: 200px;
 display: block;
 color: #fff832;
 width: calc(100% - 300px);
-}
 @media only screen and (max-width: 991px) {
-h1 {
-font-size: 36px;
-line-height: 42px;
-margin: 60px auto 0;
+  font-size: 36px;
+  line-height: 42px;
+  margin: 60px auto 0;
+  width: 100%;
+  }
 }
-}
+
 
 `
 
-const ImageContainer = style.div`
+const ImageContainer = style.div `
 width: 50%;
 img {
 width: 100%;
 }
 @media only screen and (max-width: 991px) {
-width: 100%;
-}
+  width: 100%;
+  }
 `
 export default MagicMirror;
